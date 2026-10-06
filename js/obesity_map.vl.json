@@ -1,0 +1,58 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v6.json",
+  "width": 700,
+  "height": 500,
+  "title": {
+    "text": "Estimated obesity rates across Australia",
+    "subtitle": "Grey areas indicate no available obesity estimate.",
+    "anchor": "start"
+  },
+  "data": {
+    "url": "https://raw.githubusercontent.com/rakesh-vis/FIT3179-DV2/refs/heads/main/data/lga_2021_simplified.geojson",
+    "format": {"type": "json", "property": "features"}
+  },
+  "projection": {"type": "mercator"},
+  "mark": {
+    "type": "geoshape",
+    "invalid": null,
+    "stroke": "white",
+    "strokeWidth": 0.3
+  },
+  "encoding": {
+    "tooltip": [
+      {"field": "properties.name", "type": "nominal", "title": "LGA"},
+      {
+        "field": "properties.obesity_rate",
+        "type": "quantitative",
+        "title": "Obesity rate (%)",
+        "format": ".1f"
+      },
+      {
+        "field": "properties.status",
+        "type": "nominal",
+        "title": "Estimate status"
+      }
+    ],
+    "color": {
+      "condition": {
+        "test": "!isValid(datum.properties.obesity_rate)",
+        "value": "#d9d9d9"
+      },
+      "field": "properties.obesity_rate",
+      "type": "quantitative",
+      "title": "Obesity rate (%)",
+      "scale": {
+        "type": "threshold",
+        "domain": [25, 30, 35, 40],
+        "range": ["#eff3ff", "#bdd7e7", "#6baed6", "#3182bd", "#08519c"]
+      },
+      "legend": {
+        "type": "symbol",
+        "title": "Obesity rate (%)",
+        "format": ".1f",
+        "orient": "right"
+      }
+    }
+  },
+  "config": {}
+}
