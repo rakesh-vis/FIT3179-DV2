@@ -4,7 +4,7 @@
   "height": 500,
   "title": {
     "text": "Estimated obesity rates across Australia",
-    "subtitle": "Grey areas indicate no available obesity estimate.",
+    "subtitle": "Adults aged 18+ | 2022 | Age-standardised rates",
     "anchor": "start"
   },
   "data": {
