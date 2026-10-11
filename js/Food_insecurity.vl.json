@@ -1,0 +1,53 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v6.json",
+  "width": 500,
+  "height": 300,
+  "title": {
+    "text": "Food insecurity by household type",
+    "subtitle": "Percentage of Australian households, 2023",
+    "anchor": "start"
+  },
+  "data": {
+    "url": "https://raw.githubusercontent.com/rakesh-vis/FIT3179-DV2/refs/heads/main/data/abs_food_security.csv",
+    "format": {"type": "csv"}
+  },
+  "transform": [
+    {
+      "filter": "datum.characteristic === 'Household structure' && datum.status === 'total_food_insecure'"
+    },
+    {
+      "filter": "datum.group_label !== 'Family households with dependent children present'"
+    },
+    {
+      "calculate": "{'Family households with dependent children present, lone parent': 'Lone-parent families (with dependent children)', 'Family households with dependent children present, parent couple': 'Couple-parent families (with dependent children)', 'Family households with no dependent children present': 'Families without dependent children', 'Lone person households': 'Lone-person households', 'Group households(i)': 'Group households'}[datum.group_label] || datum.group_label",
+      "as": "short_label"
+    }
+  ],
+  "mark": "bar",
+  "encoding": {
+    "x": {
+      "field": "percentage",
+      "type": "quantitative",
+      "title": "Households experiencing food insecurity (%)",
+      "scale": {"zero": true},
+      "axis": {"gridColor": "#E8E8E8"}
+    },
+    "y": {
+      "field": "short_label",
+      "type": "nominal",
+      "sort": "-x",
+      "title": null,
+      "axis": {"labelLimit": 400}
+    },
+    "tooltip": [
+      {"field": "short_label", "type": "nominal", "title": "Household type"},
+      {
+        "field": "percentage",
+        "type": "quantitative",
+        "title": "Food insecurity rate (%)",
+        "format": ".1f"
+      }
+    ]
+  },
+  "config": {}
+}
