@@ -9,3 +9,9 @@ vegaEmbed(
   "js/Food_insecurity.vl.json",
   { actions: false }
 );
+
+vegaEmbed(
+  "#income_lollipop",
+  "js/income_lollipop.vl.json",
+  { actions: false }
+);
