@@ -1,0 +1,181 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v6.json",
+  "width": 620,
+  "height": 560,
+  "title": {
+    "text": "Most inactive adults live in the cities, but rates are higher in the regions",
+    "subtitle": "Circle size = number of people (15+) not meeting physical activity guidelines · Colour = % of people, 2022",
+    "anchor": "start"
+  },
+  "params": [
+    {
+      "name": "map_view",
+      "value": "Australia",
+      "bind": {
+        "input": "select",
+        "options": [
+          "Australia",
+          "Sydney",
+          "Melbourne",
+          "South-east Queensland",
+          "Perth",
+          "Adelaide",
+          "Tasmania"
+        ],
+        "name": "Show: "
+      }
+    }
+  ],
+  "projection": {
+    "type": "conicEqualArea",
+    "parallels": [-18, -36],
+    "rotate": {
+      "expr": "[-{'Australia': [134, -28.5, 820], 'Sydney': [150.85, -33.9, 37000], 'Melbourne': [145, -37.95, 27900], 'South-east Queensland': [153, -27.6, 21500], 'Perth': [115.9, -32.1, 30200], 'Adelaide': [138.7, -35, 38000], 'Tasmania': [146.6, -42.0, 9300]}[map_view][0], 0]"
+    },
+    "center": {
+      "expr": "[0, {'Australia': [134, -28.5, 820], 'Sydney': [150.85, -33.9, 37000], 'Melbourne': [145, -37.95, 27900], 'South-east Queensland': [153, -27.6, 21500], 'Perth': [115.9, -32.1, 30200], 'Adelaide': [138.7, -35, 38000], 'Tasmania': [146.6, -42.0, 9300]}[map_view][1]]"
+    },
+    "scale": {
+      "expr": "{'Australia': [134, -28.5, 820], 'Sydney': [150.85, -33.9, 37000], 'Melbourne': [145, -37.95, 27900], 'South-east Queensland': [153, -27.6, 21500], 'Perth': [115.9, -32.1, 30200], 'Adelaide': [138.7, -35, 38000], 'Tasmania': [146.6, -42.0, 9300]}[map_view][2]"
+    }
+  },
+  "layer": [
+    {
+      "data": {
+        "url": "https://raw.githubusercontent.com/rakesh-vis/FIT3179-DV2/refs/heads/main/data/lga_2021.topojson",
+        "format": {"type": "topojson", "feature": "lga_2021"}
+      },
+      "mark": {
+        "type": "geoshape",
+        "fill": "#f1f2f4",
+        "stroke": "#c3c8cf",
+        "strokeWidth": 0.4,
+        "clip": true
+      }
+    },
+    {
+      "data": {
+        "url": "https://raw.githubusercontent.com/rakesh-vis/FIT3179-DV2/refs/heads/main/data/lga_health.csv"
+      },
+      "transform": [
+        {"filter": "isValid(datum.longitude) && datum.inactive_number > 0"}
+      ],
+      "mark": {
+        "type": "circle",
+        "stroke": "#4a5563",
+        "strokeWidth": 0.4,
+        "opacity": 0.85,
+        "clip": true
+      },
+      "encoding": {
+        "longitude": {"field": "longitude", "type": "quantitative"},
+        "latitude": {"field": "latitude", "type": "quantitative"},
+        "size": {
+          "field": "inactive_number",
+          "type": "quantitative",
+          "title": "Number of people",
+          "scale": {
+            "range": [
+              {"expr": "map_view == 'Australia' ? 3 : 40"},
+              {"expr": "map_view == 'Australia' ? 900 : 2200"}
+            ]
+          },
+          "legend": {
+            "values": [50000, 200000, 500000],
+            "format": ",.0f",
+            "symbolFillColor": "#6baed6",
+            "symbolStrokeColor": "white",
+            "titleLimit": 250
+          }
+        },
+        "color": {
+          "field": "inactive_rate",
+          "type": "quantitative",
+          "title": "% not meeting guidelines",
+          "scale": {
+            "type": "threshold",
+            "domain": [70, 75, 80, 85],
+            "range": ["#c6dbef", "#9ecae1", "#6baed6", "#3182bd", "#08519c"]
+          },
+          "legend": {
+            "type": "symbol",
+            "symbolType": "circle",
+            "symbolSize": 150,
+            "titleLimit": 250
+          }
+        },
+        "order": {"field": "inactive_number", "sort": "descending"},
+        "tooltip": [
+          {"field": "lga_name", "type": "nominal", "title": "LGA"},
+          {"field": "state", "type": "nominal", "title": "State"},
+          {
+            "field": "inactive_number",
+            "type": "quantitative",
+            "title": "People not meeting guidelines",
+            "format": ",.0f"
+          },
+          {
+            "field": "inactive_rate",
+            "type": "quantitative",
+            "title": "% not meeting guidelines",
+            "format": ".1f"
+          }
+        ]
+      }
+    },
+    {
+      "data": {
+        "url": "https://raw.githubusercontent.com/rakesh-vis/FIT3179-DV2/refs/heads/main/data/lga_health.csv"
+      },
+      "transform": [
+        {"filter": "isValid(datum.longitude) && datum.inactive_number > 0"},
+        {
+          "calculate": "toNumber(datum.inactive_number)",
+          "as": "inactive_number"
+        },
+        {
+          "window": [{"op": "rank", "as": "state_rank"}],
+          "groupby": ["state"],
+          "sort": [{"field": "inactive_number", "order": "descending"}]
+        },
+        {"filter": "datum.state_rank == 1"},
+        {
+          "calculate": "datum.lga_name === 'Unincorporated ACT' ? 'Canberra' : datum.lga_name",
+          "as": "label"
+        }
+      ],
+      "mark": {
+        "type": "text",
+        "align": "left",
+        "dx": 10,
+        "dy": -8,
+        "fontSize": 11,
+        "fontWeight": "bold",
+        "color": "#243447",
+        "clip": true
+      },
+      "encoding": {
+        "longitude": {"field": "longitude", "type": "quantitative"},
+        "latitude": {"field": "latitude", "type": "quantitative"},
+        "text": {"field": "label", "type": "nominal"}
+      }
+    }
+  ],
+  "config": {
+    "view": {"stroke": null},
+    "legend": {
+      "orient": "right",
+      "titleLimit": 250,
+      "labelFontSize": 12,
+      "titleFontSize": 12
+    },
+    "title": {
+      "offset": 20,
+      "subtitlePadding": 6,
+      "fontSize": 16,
+      "subtitleFontSize": 13,
+      "subtitleColor": "#4a5563"
+    },
+    "axis": {"labelFontSize": 12, "titleFontSize": 12}
+  }
+}
