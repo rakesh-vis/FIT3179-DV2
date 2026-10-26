@@ -33,3 +33,9 @@ vegaEmbed(
   "js/inactivity_symbol_map.vl.json",
   { actions: false }
 );
+
+vegaEmbed(
+  "#disadvantage_dots",
+  "js/disadvantage_dot_plot.vl.json",
+  { actions: false }
+);
