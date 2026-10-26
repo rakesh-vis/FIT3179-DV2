@@ -35,7 +35,7 @@ vegaEmbed(
 );
 
 vegaEmbed(
-  "#disadvantage_dots",
-  "js/disadvantage_dot_plot.vl.json",
+  "#distress_map",
+  "js/distress_dot_map.vl.json",
   { actions: false }
 );
