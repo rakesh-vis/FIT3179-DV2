@@ -15,3 +15,9 @@ vegaEmbed(
   "js/income_lollipop.vl.json",
   { actions: false }
 );
+
+vegaEmbed(
+  "#food_waffle",
+  "js/food.insecurity.waffle.vl.json",
+  { actions: false }
+);
