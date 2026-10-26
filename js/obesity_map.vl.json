@@ -1,17 +1,58 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v6.json",
   "width": 700,
-  "height": 500,
+  "height": 560,
   "title": {
-    "text": "Estimated obesity rates across Australia",
-    "subtitle": "Adults aged 18+ | 2022 | Age-standardised rates",
+    "text": "Obesity is most common across regional eastern Australia and Tasmania",
+    "subtitle": "% of adults with obesity by Local Government Area (LGA), 2022 · Grey = no estimate available",
     "anchor": "start"
   },
-  "data": {
-    "url": "https://raw.githubusercontent.com/rakesh-vis/FIT3179-DV2/refs/heads/main/data/lga_2021_simplified.geojson",
-    "format": {"type": "json", "property": "features"}
+  "projection": {
+    "type": "conicEqualArea",
+    "parallels": [ -18, -36],
+    "rotate": [-132, 0]
   },
-  "projection": {"type": "mercator"},
+  "params": [
+    {
+      "name": "min_rate",
+      "value": 15,
+      "bind": {
+        "input": "range",
+        "min": 15,
+        "max": 50,
+        "step": 1,
+        "name": "Highlight LGAs with an obesity rate of at least (%): "
+      }
+    }
+  ],
+  "data": {
+    "url": "https://raw.githubusercontent.com/rakesh-vis/FIT3179-DV2/refs/heads/main/data/lga_2021.topojson",
+    "format": {
+      "type": "topojson",
+      "feature": "lga_2021"
+    }
+  },
+  "transform": [
+    {
+      "lookup": "properties.lga_code",
+      "from": {
+        "data": {
+          "url": "https://raw.githubusercontent.com/rakesh-vis/FIT3179-DV2/refs/heads/main/data/lga_obesity.csv",
+          "format": {
+            "type": "csv",
+            "parse": {
+              "lga_code": "string"
+            }
+          }
+        },
+        "key": "lga_code",
+        "fields": [
+          "obesity_rate",
+          "status"
+        ]
+      }
+    }
+  ],
   "mark": {
     "type": "geoshape",
     "invalid": null,
@@ -19,40 +60,72 @@
     "strokeWidth": 0.3
   },
   "encoding": {
+    "color": {
+      "condition": {
+        "test": "!isValid(datum.obesity_rate)",
+        "value": "#d9d9d9"
+      },
+      "field": "obesity_rate",
+      "type": "quantitative",
+      "title": "Adults with obesity (%)",
+      "scale": {
+        "type": "threshold",
+        "domain": [
+          25,
+          30,
+          35,
+          40
+        ],
+        "range": [
+          "#eff3ff",
+          "#bdd7e7",
+          "#6baed6",
+          "#3182bd",
+          "#08519c"
+        ]
+      },
+      "legend": {
+        "type": "symbol",
+        "orient": "bottom-left",
+        "symbolType": "square",
+        "symbolSize": 200
+      }
+    },
     "tooltip": [
-      {"field": "properties.name", "type": "nominal", "title": "LGA"},
       {
-        "field": "properties.obesity_rate",
+        "field": "properties.name",
+        "type": "nominal",
+        "title": "LGA"
+      },
+      {
+        "field": "properties.state",
+        "type": "nominal",
+        "title": "State"
+      },
+      {
+        "field": "obesity_rate",
         "type": "quantitative",
-        "title": "Obesity rate (%)",
+        "title": "Adults with obesity (%)",
         "format": ".1f"
       },
       {
-        "field": "properties.status",
+        "field": "status",
         "type": "nominal",
         "title": "Estimate status"
       }
     ],
-    "color": {
+    "opacity": {
       "condition": {
-        "test": "!isValid(datum.properties.obesity_rate)",
-        "value": "#d9d9d9"
+        "test": "isValid(datum.obesity_rate) && datum.obesity_rate < min_rate",
+        "value": 0.15
       },
-      "field": "properties.obesity_rate",
-      "type": "quantitative",
-      "title": "Obesity rate (%)",
-      "scale": {
-        "type": "threshold",
-        "domain": [25, 30, 35, 40],
-        "range": ["#eff3ff", "#bdd7e7", "#6baed6", "#3182bd", "#08519c"]
-      },
-      "legend": {
-        "type": "symbol",
-        "title": "Obesity rate (%)",
-        "format": ".1f",
-        "orient": "right"
-      }
+      "value": 1
     }
   },
-  "config": {}
+  "config": {
+    "view": {
+      "stroke": null
+    }
+  }
+}
 }
