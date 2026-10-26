@@ -1,0 +1,547 @@
+lga_code,lga_name,state,obesity_rate,status
+10050,Albury,New South Wales,37.0,Available estimate
+10180,Armidale Regional,New South Wales,34.4,Available estimate
+10250,Ballina,New South Wales,31.0,Available estimate
+10300,Balranald,New South Wales,39.9,Use with caution
+10470,Bathurst Regional,New South Wales,40.0,Available estimate
+10500,Bayside (NSW),New South Wales,24.9,Available estimate
+10550,Bega Valley,New South Wales,34.9,Available estimate
+10600,Bellingen,New South Wales,39.0,Available estimate
+10650,Berrigan,New South Wales,41.2,Available estimate
+10750,Blacktown,New South Wales,32.3,Available estimate
+10800,Bland,New South Wales,39.8,Available estimate
+10850,Blayney,New South Wales,42.4,Available estimate
+10900,Blue Mountains,New South Wales,28.3,Available estimate
+10950,Bogan,New South Wales,37.3,Use with caution
+11150,Bourke,New South Wales,,No estimate
+11200,Brewarrina,New South Wales,,No estimate
+11250,Broken Hill,New South Wales,36.6,Available estimate
+11300,Burwood,New South Wales,18.5,Use with caution
+11350,Byron,New South Wales,29.7,Available estimate
+11400,Cabonne,New South Wales,36.0,Use with caution
+11450,Camden,New South Wales,36.8,Available estimate
+11500,Campbelltown (NSW),New South Wales,37.5,Available estimate
+11520,Canada Bay,New South Wales,21.9,Available estimate
+11570,Canterbury-Bankstown,New South Wales,28.8,Available estimate
+11600,Carrathool,New South Wales,39.8,Use with caution
+11650,Central Coast (NSW),New South Wales,33.5,Available estimate
+11700,Central Darling,New South Wales,,No estimate
+11720,Cessnock,New South Wales,43.3,Available estimate
+11730,Clarence Valley,New South Wales,40.0,Available estimate
+11750,Cobar,New South Wales,38.3,Available estimate
+11800,Coffs Harbour,New South Wales,33.5,Available estimate
+15560,Murrumbidgee,New South Wales,36.0,Use with caution
+15650,Muswellbrook,New South Wales,40.9,Available estimate
+15700,Nambucca Valley,New South Wales,34.7,Available estimate
+15750,Narrabri,New South Wales,38.8,Available estimate
+61810,Dorset,Tasmania,46.5,Available estimate
+62010,Flinders (Tas.),Tasmania,,No estimate
+62210,George Town,Tasmania,46.2,Available estimate
+62410,Glamorgan-Spring Bay,Tasmania,38.0,Available estimate
+62610,Glenorchy,Tasmania,35.5,Available estimate
+62810,Hobart,Tasmania,21.1,Available estimate
+12000,Coolamon,New South Wales,39.4,Use with caution
+12150,Coonamble,New South Wales,37.3,Available estimate
+12160,Cootamundra-Gundagai Regional,New South Wales,39.3,Available estimate
+12350,Cowra,New South Wales,38.4,Available estimate
+12380,Cumberland,New South Wales,28.1,Available estimate
+12390,Dubbo Regional,New South Wales,46.9,Available estimate
+12700,Dungog,New South Wales,40.7,Available estimate
+12730,Edward River,New South Wales,38.5,Available estimate
+12750,Eurobodalla,New South Wales,32.5,Available estimate
+12850,Fairfield,New South Wales,30.8,Available estimate
+12870,Federation,New South Wales,41.4,Available estimate
+12900,Forbes,New South Wales,42.2,Available estimate
+12930,Georges River,New South Wales,23.9,Available estimate
+12950,Gilgandra,New South Wales,45.1,Available estimate
+13010,Glen Innes Severn,New South Wales,40.8,Available estimate
+13310,Goulburn Mulwaree,New South Wales,40.0,Available estimate
+13340,Greater Hume Shire,New South Wales,37.0,Available estimate
+32270,Central Highlands (Qld),Queensland,37.6,Available estimate
+32310,Charters Towers,Queensland,39.9,Available estimate
+63010,Huon Valley,Tasmania,37.8,Available estimate
+63210,Kentish,Tasmania,41.2,Available estimate
+63410,King Island,Tasmania,,No estimate
+63610,Kingborough,Tasmania,31.4,Available estimate
+13450,Griffith,New South Wales,38.3,Available estimate
+13550,Gunnedah,New South Wales,40.2,Available estimate
+13660,Gwydir,New South Wales,34.6,Use with caution
+13800,Hawkesbury,New South Wales,36.3,Available estimate
+13850,Hay,New South Wales,39.7,Available estimate
+13910,Hilltops,New South Wales,40.3,Available estimate
+14000,Hornsby,New South Wales,21.4,Available estimate
+14100,Hunters Hill,New South Wales,22.7,Available estimate
+14170,Inner West,New South Wales,21.8,Available estimate
+14220,Inverell,New South Wales,41.2,Available estimate
+14300,Junee,New South Wales,46.2,Available estimate
+14350,Kempsey,New South Wales,38.9,Available estimate
+14400,Kiama,New South Wales,26.9,Available estimate
+14500,Ku-ring-gai,New South Wales,19.3,Available estimate
+14550,Kyogle,New South Wales,41.4,Available estimate
+14600,Lachlan,New South Wales,42.5,Available estimate
+14650,Lake Macquarie,New South Wales,36.0,Available estimate
+14700,Lane Cove,New South Wales,20.2,Available estimate
+14750,Leeton,New South Wales,45.6,Available estimate
+14850,Lismore,New South Wales,39.1,Available estimate
+14870,Lithgow,New South Wales,42.0,Available estimate
+14900,Liverpool,New South Wales,34.6,Available estimate
+14920,Liverpool Plains,New South Wales,48.2,Available estimate
+14950,Lockhart,New South Wales,39.6,Use with caution
+63810,Latrobe (Tas.),Tasmania,38.6,Available estimate
+64010,Launceston,Tasmania,40.0,Available estimate
+64210,Meander Valley,Tasmania,43.5,Available estimate
+64610,Northern Midlands,Tasmania,41.9,Available estimate
+64810,Sorell,Tasmania,39.7,Available estimate
+65010,Southern Midlands,Tasmania,44.5,Available estimate
+65210,Tasman,Tasmania,37.6,Available estimate
+65410,Waratah-Wynyard,Tasmania,39.4,Available estimate
+65610,West Coast,Tasmania,49.5,Available estimate
+65810,West Tamar,Tasmania,36.6,Available estimate
+15050,Maitland,New South Wales,40.4,Available estimate
+15240,Mid-Coast,New South Wales,36.7,Available estimate
+15270,Mid-Western Regional,New South Wales,39.1,Available estimate
+15300,Moree Plains,New South Wales,43.5,Available estimate
+15350,Mosman,New South Wales,20.1,Available estimate
+15520,Murray River,New South Wales,33.9,Available estimate
+15800,Narrandera,New South Wales,43.9,Available estimate
+15850,Narromine,New South Wales,46.4,Available estimate
+15900,Newcastle,New South Wales,32.4,Available estimate
+15950,North Sydney,New South Wales,21.7,Available estimate
+15990,Northern Beaches,New South Wales,24.2,Available estimate
+16100,Oberon,New South Wales,42.1,Available estimate
+16150,Orange,New South Wales,39.5,Available estimate
+16200,Parkes,New South Wales,43.0,Available estimate
+16260,Parramatta,New South Wales,23.7,Available estimate
+16350,Penrith,New South Wales,39.1,Available estimate
+16380,Port Macquarie-Hastings,New South Wales,33.3,Available estimate
+16400,Port Stephens,New South Wales,36.4,Available estimate
+16490,Queanbeyan-Palerang Regional,New South Wales,36.3,Available estimate
+16550,Randwick,New South Wales,21.9,Available estimate
+16610,Richmond Valley,New South Wales,41.2,Available estimate
+16700,Ryde,New South Wales,20.3,Available estimate
+16900,Shellharbour,New South Wales,36.4,Available estimate
+16950,Shoalhaven,New South Wales,35.0,Available estimate
+17000,Singleton,New South Wales,34.5,Available estimate
+17040,Snowy Monaro Regional,New South Wales,36.9,Available estimate
+17080,Snowy Valleys,New South Wales,40.5,Available estimate
+32330,Cherbourg,Queensland,,No estimate
+32450,Cloncurry,Queensland,,No estimate
+17100,Strathfield,New South Wales,18.3,Available estimate
+17150,Sutherland Shire,New South Wales,28.6,Available estimate
+17200,Sydney,New South Wales,20.5,Available estimate
+17310,Tamworth Regional,New South Wales,42.7,Available estimate
+17350,Temora,New South Wales,40.5,Available estimate
+17400,Tenterfield,New South Wales,38.6,Available estimate
+17420,The Hills Shire,New South Wales,23.3,Available estimate
+17550,Tweed,New South Wales,32.7,Available estimate
+17620,Upper Hunter Shire,New South Wales,40.9,Available estimate
+17640,Upper Lachlan Shire,New South Wales,35.7,Use with caution
+17650,Uralla,New South Wales,40.6,Available estimate
+17750,Wagga Wagga,New South Wales,40.5,Available estimate
+17850,Walcha,New South Wales,32.6,Available estimate
+17900,Walgett,New South Wales,,No estimate
+17950,Warren,New South Wales,37.9,Use with caution
+18020,Warrumbungle Shire,New South Wales,42.4,Available estimate
+18050,Waverley,New South Wales,22.4,Available estimate
+18100,Weddin,New South Wales,36.0,Available estimate
+18200,Wentworth,New South Wales,40.3,Available estimate
+18250,Willoughby,New South Wales,19.0,Available estimate
+18350,Wingecarribee,New South Wales,31.3,Available estimate
+18400,Wollondilly,New South Wales,34.5,Available estimate
+18450,Wollongong,New South Wales,30.1,Available estimate
+18500,Woollahra,New South Wales,21.2,Available estimate
+18710,Yass Valley,New South Wales,36.6,Available estimate
+19399,Unincorporated NSW,New South Wales,,No estimate
+20110,Alpine,Victoria,34.0,Available estimate
+20260,Ararat,Victoria,42.2,Available estimate
+20570,Ballarat,Victoria,38.5,Available estimate
+20660,Banyule,Victoria,26.6,Available estimate
+20740,Bass Coast,Victoria,34.8,Available estimate
+20830,Baw Baw,Victoria,36.4,Available estimate
+32500,Cook,Queensland,,No estimate
+32600,Croydon,Queensland,,No estimate
+20910,Bayside (Vic.),Victoria,22.6,Available estimate
+21010,Benalla,Victoria,38.9,Available estimate
+21110,Boroondara,Victoria,19.5,Available estimate
+21180,Brimbank,Victoria,28.9,Available estimate
+21270,Buloke,Victoria,38.8,Available estimate
+21370,Campaspe,Victoria,39.3,Available estimate
+21450,Cardinia,Victoria,36.0,Available estimate
+21610,Casey,Victoria,33.3,Available estimate
+21670,Central Goldfields,Victoria,36.4,Available estimate
+21750,Colac Otway,Victoria,42.4,Available estimate
+21830,Corangamite,Victoria,41.3,Available estimate
+21890,Darebin,Victoria,25.1,Available estimate
+22110,East Gippsland,Victoria,35.0,Available estimate
+22170,Frankston,Victoria,33.3,Available estimate
+22250,Gannawarra,Victoria,38.6,Available estimate
+22310,Glen Eira,Victoria,21.5,Available estimate
+22410,Glenelg,Victoria,40.3,Available estimate
+22490,Golden Plains,Victoria,39.4,Available estimate
+22620,Greater Bendigo,Victoria,36.0,Available estimate
+22670,Greater Dandenong,Victoria,24.1,Available estimate
+22750,Greater Geelong,Victoria,33.3,Available estimate
+22830,Greater Shepparton,Victoria,38.6,Available estimate
+22910,Hepburn,Victoria,33.2,Available estimate
+22980,Hindmarsh,Victoria,34.7,Available estimate
+23110,Hobsons Bay,Victoria,28.1,Available estimate
+23190,Horsham,Victoria,43.4,Available estimate
+23270,Hume,Victoria,35.8,Available estimate
+23350,Indigo,Victoria,36.7,Available estimate
+32770,Doomadgee,Queensland,,No estimate
+32810,Douglas,Queensland,36.4,Available estimate
+23430,Kingston (Vic.),Victoria,25.6,Available estimate
+23670,Knox,Victoria,28.2,Available estimate
+23810,Latrobe (Vic.),Victoria,36.8,Available estimate
+23940,Loddon,Victoria,41.3,Available estimate
+24130,Macedon Ranges,Victoria,29.9,Available estimate
+24210,Manningham,Victoria,20.5,Available estimate
+24250,Mansfield,Victoria,34.4,Available estimate
+24330,Maribyrnong,Victoria,23.8,Available estimate
+24410,Maroondah,Victoria,26.0,Available estimate
+32750,Diamantina,Queensland,,No estimate
+33100,Etheridge,Queensland,,No estimate
+24600,Melbourne,Victoria,20.6,Available estimate
+24650,Melton,Victoria,36.2,Available estimate
+24780,Mildura,Victoria,39.0,Available estimate
+24850,Mitchell,Victoria,38.8,Available estimate
+24900,Moira,Victoria,41.3,Available estimate
+24970,Monash,Victoria,20.0,Available estimate
+44000,Maralinga Tjarutja,South Australia,,No estimate
+25060,Moonee Valley,Victoria,24.2,Available estimate
+25150,Moorabool,Victoria,37.4,Available estimate
+25250,Moreland,Victoria,25.2,Available estimate
+25340,Mornington Peninsula,Victoria,29.9,Available estimate
+25430,Mount Alexander,Victoria,33.5,Available estimate
+25490,Moyne,Victoria,41.5,Available estimate
+25620,Murrindindi,Victoria,35.8,Available estimate
+25710,Nillumbik,Victoria,27.8,Available estimate
+25810,Northern Grampians,Victoria,40.7,Available estimate
+25900,Port Phillip,Victoria,23.7,Available estimate
+25990,Pyrenees,Victoria,38.9,Available estimate
+26080,Queenscliffe,Victoria,26.7,Use with caution
+26170,South Gippsland,Victoria,33.9,Available estimate
+26260,Southern Grampians,Victoria,34.3,Available estimate
+70200,Alice Springs,Northern Territory,34.5,Available estimate
+26350,Stonnington,Victoria,21.7,Available estimate
+26430,Strathbogie,Victoria,38.7,Available estimate
+26490,Surf Coast,Victoria,30.5,Available estimate
+26610,Swan Hill,Victoria,35.2,Available estimate
+26670,Towong,Victoria,32.1,Available estimate
+26700,Wangaratta,Victoria,39.2,Available estimate
+26730,Warrnambool,Victoria,40.4,Available estimate
+26810,Wellington,Victoria,40.2,Available estimate
+26890,West Wimmera,Victoria,34.3,Use with caution
+26980,Whitehorse,Victoria,19.6,Available estimate
+27070,Whittlesea,Victoria,33.1,Available estimate
+27170,Wodonga,Victoria,41.4,Available estimate
+27260,Wyndham,Victoria,32.8,Available estimate
+27350,Yarra,Victoria,25.4,Available estimate
+27450,Yarra Ranges,Victoria,32.1,Available estimate
+27630,Yarriambiack,Victoria,34.5,Available estimate
+29399,Unincorporated Vic,Victoria,,No estimate
+30250,Aurukun,Queensland,,No estimate
+30300,Balonne,Queensland,43.0,Available estimate
+30370,Banana,Queensland,32.8,Available estimate
+30410,Barcaldine,Queensland,,No estimate
+30450,Barcoo,Queensland,,No estimate
+30760,Blackall Tambo,Queensland,,No estimate
+30900,Boulia,Queensland,,No estimate
+31000,Brisbane,Queensland,27.7,Available estimate
+31750,Bulloo,Queensland,,No estimate
+31820,Bundaberg,Queensland,40.4,Available estimate
+31900,Burdekin,Queensland,37.8,Available estimate
+31950,Burke,Queensland,,No estimate
+32080,Cairns,Queensland,36.1,Available estimate
+32250,Carpentaria,Queensland,,No estimate
+32260,Cassowary Coast,Queensland,39.5,Available estimate
+33200,Flinders (Qld),Queensland,,No estimate
+33220,Fraser Coast,Queensland,35.5,Available estimate
+33360,Gladstone,Queensland,40.1,Available estimate
+33430,Gold Coast,Queensland,31.9,Available estimate
+33610,Goondiwindi,Queensland,42.8,Available estimate
+33620,Gympie,Queensland,40.9,Available estimate
+33800,Hinchinbrook,Queensland,35.4,Available estimate
+33830,Hope Vale,Queensland,,No estimate
+33960,Ipswich,Queensland,44.5,Available estimate
+33980,Isaac,Queensland,35.3,Available estimate
+34420,Kowanyama,Queensland,,No estimate
+34530,Livingstone,Queensland,35.5,Available estimate
+34570,Lockhart River,Queensland,,No estimate
+34580,Lockyer Valley,Queensland,41.1,Available estimate
+34590,Logan,Queensland,41.0,Available estimate
+34710,Longreach,Queensland,,No estimate
+34770,Mackay,Queensland,36.2,Available estimate
+34800,McKinlay,Queensland,,No estimate
+34830,Mapoon,Queensland,,No estimate
+34860,Maranoa,Queensland,41.9,Available estimate
+34880,Mareeba,Queensland,,No estimate
+35010,Moreton Bay,Queensland,36.6,Available estimate
+35250,Mornington,Queensland,,No estimate
+70420,Barkly,Northern Territory,,No estimate
+70540,Belyuen,Northern Territory,,No estimate
+35300,Mount Isa,Queensland,35.8,Available estimate
+35600,Murweh,Queensland,,No estimate
+35670,Napranum,Queensland,,No estimate
+35740,Noosa,Queensland,30.3,Available estimate
+35760,North Burnett,Queensland,36.5,Available estimate
+35780,Northern Peninsula Area,Queensland,,No estimate
+35790,Palm Island,Queensland,,No estimate
+52940,Dowerin,Western Australia,,No estimate
+35800,Paroo,Queensland,,No estimate
+36070,Pormpuraaw,Queensland,,No estimate
+36150,Quilpie,Queensland,,No estimate
+36250,Redland,Queensland,33.9,Available estimate
+53010,Dumbleyung,Western Australia,,No estimate
+36300,Richmond,Queensland,,No estimate
+36370,Rockhampton,Queensland,44.0,Available estimate
+36510,Scenic Rim,Queensland,37.7,Available estimate
+36580,Somerset,Queensland,40.4,Available estimate
+36630,South Burnett,Queensland,41.5,Available estimate
+36660,Southern Downs,Queensland,36.7,Available estimate
+36720,Sunshine Coast,Queensland,33.1,Available estimate
+36820,Tablelands,Queensland,35.2,Available estimate
+36910,Toowoomba,Queensland,37.4,Available estimate
+36950,Torres,Queensland,,No estimate
+36960,Torres Strait Island,Queensland,,No estimate
+37010,Townsville,Queensland,40.6,Available estimate
+37300,Weipa,Queensland,,No estimate
+37310,Western Downs,Queensland,44.7,Available estimate
+37340,Whitsunday,Queensland,37.3,Available estimate
+53080,Dundas,Western Australia,,No estimate
+37400,Winton,Queensland,,No estimate
+37550,Woorabinda,Queensland,,No estimate
+53150,East Fremantle,Western Australia,23.3,Available estimate
+53220,East Pilbara,Western Australia,,No estimate
+53290,Esperance,Western Australia,31.1,Available estimate
+53360,Exmouth,Western Australia,,No estimate
+53430,Fremantle,Western Australia,22.5,Available estimate
+53570,Gingin,Western Australia,34.6,Use with caution
+37570,Wujal Wujal,Queensland,,No estimate
+37600,Yarrabah,Queensland,,No estimate
+40070,Adelaide,South Australia,15.8,Available estimate
+40120,Adelaide Hills,South Australia,30.6,Available estimate
+40150,Adelaide Plains,South Australia,40.8,Available estimate
+40220,Alexandrina,South Australia,34.1,Available estimate
+40250,Anangu Pitjantjatjara Yunkunytjatjara,South Australia,,No estimate
+40310,Barossa,South Australia,36.6,Available estimate
+40430,Barunga West,South Australia,36.8,Use with caution
+40520,Berri Barmera,South Australia,38.1,Available estimate
+40700,Burnside,South Australia,21.7,Available estimate
+40910,Campbelltown (SA),South Australia,27.6,Available estimate
+41010,Ceduna,South Australia,,No estimate
+44060,Marion,South Australia,31.7,Available estimate
+44210,Mid Murray,South Australia,37.5,Available estimate
+41060,Charles Sturt,South Australia,32.2,Available estimate
+44340,Mitcham,South Australia,27.5,Available estimate
+44550,Mount Barker,South Australia,36.7,Available estimate
+44620,Mount Gambier,South Australia,41.3,Available estimate
+41140,Clare and Gilbert Valleys,South Australia,35.3,Available estimate
+41190,Cleve,South Australia,28.0,Use with caution
+41330,Coober Pedy,South Australia,,No estimate
+41560,Copper Coast,South Australia,37.9,Available estimate
+41750,Elliston,South Australia,,No estimate
+41830,Flinders Ranges,South Australia,,No estimate
+41960,Franklin Harbour,South Australia,25.4,Use with caution
+42030,Gawler,South Australia,41.2,Available estimate
+42110,Goyder,South Australia,31.1,Available estimate
+42250,Grant,South Australia,39.1,Use with caution
+42600,Holdfast Bay,South Australia,27.1,Available estimate
+42750,Kangaroo Island,South Australia,34.7,Available estimate
+50350,Bassendean,Western Australia,28.8,Available estimate
+43080,Karoonda East Murray,South Australia,31.1,Use with caution
+52170,Cottesloe ,Western Australia,20.3,Available estimate
+43220,Kimba,South Australia,29.7,Use with caution
+52240,Cranbrook,Western Australia,32.4,Use with caution
+43360,Kingston (SA),South Australia,33.6,Use with caution
+43650,Light,South Australia,42.4,Available estimate
+43710,Lower Eyre Peninsula,South Australia,,No estimate
+43790,Loxton Waikerie,South Australia,36.4,Available estimate
+44830,Mount Remarkable,South Australia,28.0,Use with caution
+45040,Murray Bridge,South Australia,36.9,Available estimate
+45090,Naracoorte Lucindale,South Australia,32.0,Available estimate
+45120,Northern Areas,South Australia,35.9,Available estimate
+45290,Norwood Payneham and St Peters,South Australia,24.1,Available estimate
+45340,Onkaparinga,South Australia,39.4,Available estimate
+45400,Orroroo Carrieton,South Australia,,No estimate
+45540,Peterborough,South Australia,27.8,Use with caution
+45680,Playford,South Australia,45.6,Available estimate
+45890,Port Adelaide Enfield,South Australia,33.2,Available estimate
+46090,Port Augusta,South Australia,36.1,Available estimate
+46300,Port Lincoln,South Australia,34.2,Available estimate
+46450,Port Pirie,South Australia,37.8,Available estimate
+46510,Prospect,South Australia,24.4,Available estimate
+46670,Renmark Paringa,South Australia,33.9,Available estimate
+46860,Robe,South Australia,33.0,Use with caution
+46970,Roxby Downs,South Australia,26.2,Available estimate
+47140,Salisbury,South Australia,38.3,Available estimate
+47290,Southern Mallee,South Australia,30.8,Use with caution
+47490,Streaky Bay,South Australia,,No estimate
+47630,Tatiara,South Australia,37.8,Available estimate
+47700,Tea Tree Gully,South Australia,36.6,Available estimate
+47800,Coorong,South Australia,29.8,Available estimate
+47910,Tumby Bay,South Australia,,No estimate
+47980,Unley,South Australia,23.5,Available estimate
+48050,Victor Harbor,South Australia,32.5,Available estimate
+48130,Wakefield,South Australia,40.2,Use with caution
+48260,Walkerville,South Australia,24.0,Available estimate
+48340,Wattle Range,South Australia,36.9,Available estimate
+48410,West Torrens,South Australia,29.8,Available estimate
+48540,Whyalla,South Australia,34.0,Available estimate
+48640,Wudinna,South Australia,,No estimate
+48750,Yankalilla,South Australia,32.4,Available estimate
+48830,Yorke Peninsula,South Australia,36.6,Available estimate
+49399,Unincorporated SA,South Australia,,No estimate
+50080,Albany,Western Australia,35.9,Available estimate
+50210,Armadale,Western Australia,36.6,Available estimate
+50250,Ashburton,Western Australia,,No estimate
+50280,Augusta Margaret River,Western Australia,33.9,Available estimate
+50420,Bayswater,Western Australia,25.5,Available estimate
+50490,Belmont,Western Australia,29.0,Available estimate
+50560,Beverley,Western Australia,37.5,Use with caution
+54340,Katanning,Western Australia,42.8,Available estimate
+50630,Boddington,Western Australia,33.0,Available estimate
+50770,Boyup Brook,Western Australia,35.6,Use with caution
+50840,Bridgetown-Greenbushes,Western Australia,34.1,Use with caution
+52870,Donnybrook-Balingup,Western Australia,35.1,Available estimate
+50910,Brookton,Western Australia,,No estimate
+50980,Broome,Western Australia,30.7,Available estimate
+51080,Broomehill-Tambellup,Western Australia,33.3,Use with caution
+51120,Bruce Rock,Western Australia,32.4,Use with caution
+51190,Bunbury,Western Australia,38.5,Available estimate
+51260,Busselton,Western Australia,32.0,Available estimate
+51310,Cambridge,Western Australia,19.2,Available estimate
+51330,Canning,Western Australia,23.4,Available estimate
+51400,Capel,Western Australia,34.6,Available estimate
+51470,Carnamah,Western Australia,,No estimate
+51540,Carnarvon,Western Australia,,No estimate
+51610,Chapman Valley,Western Australia,35.8,Use with caution
+51680,Chittering,Western Australia,37.3,Available estimate
+51710,Christmas Island,Other Territories,,No estimate
+51750,Claremont,Western Australia,20.4,Available estimate
+51820,Cockburn,Western Australia,30.3,Available estimate
+51860,Cocos Islands,Other Territories,,No estimate
+51890,Collie,Western Australia,41.8,Available estimate
+51960,Coolgardie,Western Australia,,No estimate
+52030,Coorow,Western Australia,32.6,Use with caution
+52100,Corrigin,Western Australia,31.8,Use with caution
+52310,Cuballing,Western Australia,,No estimate
+52380,Cue,Western Australia,,No estimate
+52450,Cunderdin,Western Australia,35.9,Use with caution
+52520,Dalwallinu,Western Australia,38.6,Use with caution
+52590,Dandaragan,Western Australia,35.0,Use with caution
+52660,Dardanup,Western Australia,36.0,Available estimate
+52730,Denmark,Western Australia,36.5,Available estimate
+52800,Derby-West Kimberley,Western Australia,,No estimate
+53640,Gnowangerup,Western Australia,33.4,Use with caution
+53710,Goomalling,Western Australia,36.5,Use with caution
+53780,Gosnells,Western Australia,32.5,Available estimate
+53800,Greater Geraldton,Western Australia,38.8,Available estimate
+53920,Halls Creek,Western Australia,,No estimate
+53990,Harvey,Western Australia,36.1,Available estimate
+54060,Irwin,Western Australia,34.6,Available estimate
+54130,Jerramungup,Western Australia,33.9,Use with caution
+54170,Joondalup,Western Australia,26.6,Available estimate
+54200,Kalamunda,Western Australia,32.8,Available estimate
+54280,Kalgoorlie-Boulder,Western Australia,33.0,Available estimate
+54310,Karratha,Western Australia,33.4,Available estimate
+54410,Kellerberrin,Western Australia,30.8,Use with caution
+54480,Kent,Western Australia,,No estimate
+54550,Kojonup,Western Australia,32.2,Use with caution
+54620,Kondinin,Western Australia,,No estimate
+54690,Koorda,Western Australia,,No estimate
+54760,Kulin,Western Australia,,No estimate
+54830,Kwinana,Western Australia,39.3,Available estimate
+54900,Lake Grace,Western Australia,,No estimate
+54970,Laverton,Western Australia,,No estimate
+55040,Leonora,Western Australia,,No estimate
+55110,Mandurah,Western Australia,35.9,Available estimate
+55180,Manjimup,Western Australia,32.6,Available estimate
+55250,Meekatharra,Western Australia,,No estimate
+55320,Melville,Western Australia,22.5,Available estimate
+55390,Menzies,Western Australia,,No estimate
+55460,Merredin,Western Australia,33.1,Use with caution
+55530,Mingenew,Western Australia,,No estimate
+55600,Moora,Western Australia,37.7,Use with caution
+55670,Morawa,Western Australia,,No estimate
+55740,Mosman Park,Western Australia,20.8,Available estimate
+55810,Mount Magnet,Western Australia,,No estimate
+55880,Mount Marshall,Western Australia,,No estimate
+55950,Mukinbudin,Western Australia,,No estimate
+56090,Mundaring,Western Australia,31.1,Available estimate
+56160,Murchison,Western Australia,,No estimate
+56230,Murray,Western Australia,36.2,Available estimate
+56300,Nannup,Western Australia,30.0,Use with caution
+56370,Narembeen,Western Australia,,No estimate
+56460,Narrogin,Western Australia,40.8,Available estimate
+56580,Nedlands,Western Australia,16.9,Use with caution
+56620,Ngaanyatjarraku,Western Australia,,No estimate
+56730,Northam,Western Australia,44.2,Available estimate
+56790,Northampton,Western Australia,35.2,Use with caution
+56860,Nungarin,Western Australia,,No estimate
+56930,Peppermint Grove,Western Australia,22.7,Use with caution
+57000,Perenjori,Western Australia,,No estimate
+57080,Perth,Western Australia,22.4,Use with caution
+57140,Pingelly,Western Australia,30.1,Use with caution
+57210,Plantagenet,Western Australia,37.0,Available estimate
+57280,Port Hedland,Western Australia,33.0,Available estimate
+57350,Quairading,Western Australia,,No estimate
+57420,Ravensthorpe,Western Australia,,No estimate
+57490,Rockingham,Western Australia,39.3,Available estimate
+57630,Sandstone,Western Australia,,No estimate
+57700,Serpentine-Jarrahdale,Western Australia,41.1,Available estimate
+57770,Shark Bay,Western Australia,,No estimate
+59350,Yalgoo,Western Australia,,No estimate
+57840,South Perth,Western Australia,21.7,Available estimate
+57910,Stirling,Western Australia,26.0,Available estimate
+57980,Subiaco,Western Australia,18.6,Available estimate
+58050,Swan,Western Australia,35.4,Available estimate
+58190,Tammin,Western Australia,,No estimate
+58260,Three Springs,Western Australia,,No estimate
+58330,Toodyay,Western Australia,32.9,Available estimate
+58400,Trayning,Western Australia,,No estimate
+58470,Upper Gascoyne,Western Australia,,No estimate
+58510,Victoria Park,Western Australia,25.1,Available estimate
+58540,Victoria Plains,Western Australia,,No estimate
+58570,Vincent,Western Australia,20.8,Use with caution
+58610,Wagin,Western Australia,30.2,Use with caution
+58680,Wandering,Western Australia,,No estimate
+58760,Wanneroo,Western Australia,32.4,Available estimate
+58820,Waroona,Western Australia,40.1,Available estimate
+58890,West Arthur,Western Australia,,No estimate
+59030,Westonia,Western Australia,,No estimate
+59100,Wickepin,Western Australia,,No estimate
+59170,Williams,Western Australia,32.5,Use with caution
+59360,Yilgarn,Western Australia,,No estimate
+59250,Wiluna,Western Australia,,No estimate
+59310,Wongan-Ballidu,Western Australia,36.0,Use with caution
+59370,York,Western Australia,39.1,Use with caution
+60210,Break O'Day,Tasmania,42.2,Available estimate
+60410,Brighton,Tasmania,47.0,Available estimate
+60610,Burnie,Tasmania,44.3,Available estimate
+60810,Central Coast (Tas.),Tasmania,39.3,Available estimate
+61010,Central Highlands (Tas.),Tasmania,42.7,Available estimate
+61210,Circular Head,Tasmania,43.3,Available estimate
+61410,Clarence,Tasmania,32.9,Available estimate
+59320,Woodanilling,Western Australia,,No estimate
+59330,Wyalkatchem,Western Australia,,No estimate
+59340,Wyndham-East Kimberley,Western Australia,,No estimate
+61510,Derwent Valley,Tasmania,42.1,Available estimate
+61610,Devonport,Tasmania,40.5,Available estimate
+70620,Central Desert,Northern Territory,,No estimate
+70700,Coomalie ,Northern Territory,,No estimate
+71000,Darwin,Northern Territory,29.9,Available estimate
+71150,Darwin Waterfront Precinct,Northern Territory,,No estimate
+71300,East Arnhem,Northern Territory,,No estimate
+72200,Katherine,Northern Territory,48.9,Available estimate
+72300,Litchfield,Northern Territory,38.2,Available estimate
+72330,MacDonnell,Northern Territory,,No estimate
+72800,Palmerston,Northern Territory,41.3,Available estimate
+73600,Roper Gulf,Northern Territory,,No estimate
+74050,Tiwi Islands,Northern Territory,,No estimate
+74550,Victoria Daly,Northern Territory,,No estimate
+74560,Wagait,Northern Territory,,No estimate
+74660,West Arnhem,Northern Territory,,No estimate
+74680,West Daly,Northern Territory,,No estimate
+79399,Unincorporated NT,Northern Territory,,No estimate
+89399,Unincorporated ACT,Australian Capital Territory,29.3,Available estimate
