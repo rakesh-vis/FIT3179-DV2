@@ -18,6 +18,6 @@ vegaEmbed(
 
 vegaEmbed(
   "#food_waffle",
-  "js/food.insecurity.waffle.vl.json",
+  "js/Food.insecurity.waffle.vl.json",
   { actions: false }
 );
