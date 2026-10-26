@@ -1,0 +1,91 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v6.json",
+  "width": 620,
+  "height": 560,
+  "title": {
+    "text": "Almost half a million Melburnians live with high psychological distress",
+    "subtitle": "Adults (18+) with high or very high psychological distress, Greater Melbourne, 2022 · 1 dot = 200 people",
+    "anchor": "start"
+  },
+  "projection": {
+    "type": "conicEqualArea",
+    "parallels": [-18, -36],
+    "rotate": [-132, 0]
+  },
+  "layer": [
+    {
+      "data": {
+        "url": "https://raw.githubusercontent.com/rakesh-vis/FIT3179-DV2/refs/heads/main/data/melbourne_lga.topojson",
+        "format": {"type": "topojson", "feature": "melbourne_lga"}
+      },
+      "transform": [
+        {
+          "lookup": "properties.lga_code",
+          "from": {
+            "data": {
+              "url": "https://raw.githubusercontent.com/rakesh-vis/FIT3179-DV2/refs/heads/main/data/lga_health.csv"
+            },
+            "key": "lga_code",
+            "fields": ["distress_number", "distress_rate"]
+          }
+        },
+        {"calculate": "toNumber(datum.distress_rate)", "as": "distress_rate"},
+        {
+          "calculate": "toNumber(datum.distress_number)",
+          "as": "distress_number"
+        }
+      ],
+      "mark": {
+        "type": "geoshape",
+        "fill": "#eef0f3",
+        "stroke": "#9aa3ad",
+        "strokeWidth": 0.6
+      },
+      "encoding": {
+        "tooltip": [
+          {"field": "properties.name", "type": "nominal", "title": "LGA"},
+          {
+            "field": "distress_number",
+            "type": "quantitative",
+            "title": "Adults with high/very high distress",
+            "format": ",.0f"
+          },
+          {
+            "field": "distress_rate",
+            "type": "quantitative",
+            "title": "% of adults",
+            "format": ".1f"
+          }
+        ]
+      }
+    },
+    {
+      "data": {
+        "url": "https://raw.githubusercontent.com/rakesh-vis/FIT3179-DV2/refs/heads/main/data/melbourne_distress_dots.csv"
+      },
+      "mark": {
+        "type": "circle",
+        "size": 5,
+        "color": "#3182bd",
+        "opacity": 0.7,
+        "tooltip": null
+      },
+      "encoding": {
+        "longitude": {"field": "longitude", "type": "quantitative"},
+        "latitude": {"field": "latitude", "type": "quantitative"}
+      }
+    }
+  ],
+  "config": {
+    "view": {"stroke": null},
+    "title": {
+      "offset": 20,
+      "subtitlePadding": 6,
+      "fontSize": 16,
+      "subtitleFontSize": 13,
+      "subtitleColor": "#4a5563"
+    },
+    "legend": {"labelFontSize": 12, "titleFontSize": 12},
+    "axis": {"labelFontSize": 12, "titleFontSize": 12}
+  }
+}
