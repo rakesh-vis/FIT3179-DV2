@@ -1,0 +1,80 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v6.json",
+  "title": {
+    "text": "About 1 in 8 Australian households doesn't always have enough to eat",
+    "subtitle": "Food security status of all Australian households, 2023 · Each square = 1% of households",
+    "anchor": "start",
+    "offset": 20
+  },
+  "data": {
+    "url": "https://raw.githubusercontent.com/rakesh-vis/FIT3179-DV2/refs/heads/main/data/abs_food_security.csv",
+    "format": {"type": "csv"}
+  },
+  "transform": [
+    {
+      "filter": "datum.group_label === 'Total households' && indexof(['food_secure', 'marginal', 'moderate', 'severe'], datum.status) >= 0"
+    },
+    {
+      "calculate": "{'severe': 'Severe', 'moderate': 'Moderate', 'marginal': 'Marginal', 'food_secure': 'Food secure'}[datum.status]",
+      "as": "level"
+    },
+    {
+      "calculate": "{'severe': 1, 'moderate': 2, 'marginal': 3, 'food_secure': 4}[datum.status]",
+      "as": "level_order"
+    },
+    {
+      "calculate": "datum.status === 'food_secure' ? 0 : round(datum.percentage)",
+      "as": "squares"
+    },
+    {
+      "joinaggregate": [
+        {"op": "sum", "field": "squares", "as": "insecure_squares"}
+      ]
+    },
+    {
+      "calculate": "datum.status === 'food_secure' ? 100 - datum.insecure_squares : datum.squares",
+      "as": "squares"
+    },
+    {"calculate": "sequence(0, datum.squares)", "as": "square_id"},
+    {"flatten": ["square_id"]},
+    {
+      "window": [{"op": "row_number", "as": "position"}],
+      "sort": [{"field": "level_order"}, {"field": "square_id"}]
+    },
+    {"calculate": "(datum.position - 1) % 10", "as": "col"},
+    {"calculate": "floor((datum.position - 1) / 10)", "as": "row"}
+  ],
+  "width": {"step": 30},
+  "height": {"step": 30},
+  "mark": {
+    "type": "rect",
+    "stroke": "white",
+    "strokeWidth": 3,
+    "cornerRadius": 3
+  },
+  "encoding": {
+    "x": {"field": "col", "type": "ordinal", "axis": null},
+    "y": {"field": "row", "type": "ordinal", "axis": null},
+    "color": {
+      "field": "level",
+      "type": "nominal",
+      "title": "Food security status",
+      "sort": ["Severe", "Moderate", "Marginal", "Food secure"],
+      "scale": {
+        "domain": ["Severe", "Moderate", "Marginal", "Food secure"],
+        "range": ["#a63a22", "#e76f51", "#f4b6a3", "#dfe3e8"]
+      },
+      "legend": {"orient": "right", "symbolType": "square", "symbolSize": 200}
+    },
+    "tooltip": [
+      {"field": "level", "type": "nominal", "title": "Status"},
+      {
+        "field": "percentage",
+        "type": "quantitative",
+        "title": "% of households",
+        "format": ".1f"
+      }
+    ]
+  },
+  "config": {"view": {"stroke": null}}
+}
