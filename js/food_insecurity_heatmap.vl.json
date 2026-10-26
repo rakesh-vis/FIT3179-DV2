@@ -1,0 +1,115 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v6.json",
+  "width": 420,
+  "height": {"step": 52},
+  "title": {
+    "text": "Group and lone-parent households face the most severe food insecurity",
+    "subtitle": [
+      "Percentage of households at each level of food insecurity, Australia, 2023",
+      "Severe = skipping meals or going without food"
+    ],
+    "anchor": "start"
+  },
+  "data": {
+    "url": "https://raw.githubusercontent.com/rakesh-vis/FIT3179-DV2/refs/heads/main/data/abs_food_security.csv",
+    "format": {"type": "csv"}
+  },
+  "transform": [
+    {
+      "filter": "datum.characteristic === 'Household structure' && indexof(['marginal', 'moderate', 'severe'], datum.status) >= 0"
+    },
+    {
+      "filter": "datum.group_label !== 'Family households with dependent children present'"
+    },
+    {
+      "calculate": "{'Family households with dependent children present, lone parent': 'Lone-parent families', 'Family households with dependent children present, parent couple': 'Couple-parent families', 'Family households with no dependent children present': 'Families without dependent children', 'Lone person households': 'Lone-person households', 'Group households(i)': 'Group households'}[datum.group_label] || datum.group_label",
+      "as": "short_label"
+    },
+    {
+      "calculate": "{'marginal': 'Marginal', 'moderate': 'Moderate', 'severe': 'Severe'}[datum.status]",
+      "as": "level"
+    }
+  ],
+  "encoding": {
+    "x": {
+      "field": "level",
+      "type": "ordinal",
+      "sort": ["Marginal", "Moderate", "Severe"],
+      "title": "Level of food insecurity",
+      "axis": {
+        "orient": "top",
+        "labelAngle": 0,
+        "domain": false,
+        "ticks": false,
+        "labelFontWeight": "bold"
+      }
+    },
+    "y": {
+      "field": "short_label",
+      "type": "nominal",
+      "sort": [
+        "Lone-parent families",
+        "Group households",
+        "Lone-person households",
+        "Couple-parent families",
+        "Families without dependent children"
+      ],
+      "title": null,
+      "axis": {"domain": false, "ticks": false, "labelLimit": 320}
+    },
+    "tooltip": [
+      {"field": "short_label", "type": "nominal", "title": "Household type"},
+      {"field": "level", "type": "ordinal", "title": "Level"},
+      {
+        "field": "percentage",
+        "type": "quantitative",
+        "title": "Households (%)",
+        "format": ".1f"
+      }
+    ]
+  },
+  "layer": [
+    {
+      "mark": {"type": "rect", "stroke": "white", "strokeWidth": 2},
+      "encoding": {
+        "color": {
+          "field": "percentage",
+          "type": "quantitative",
+          "title": "Households (%)",
+          "scale": {"scheme": "blues", "domain": [0, 15]},
+          "legend": {
+            "orient": "bottom",
+            "direction": "horizontal",
+            "gradientLength": 200
+          }
+        }
+      }
+    },
+    {
+      "mark": {"type": "text", "fontSize": 13, "fontWeight": "bold"},
+      "encoding": {
+        "text": {
+          "field": "percentage",
+          "type": "quantitative",
+          "format": ".1f"
+        },
+        "color": {
+          "condition": {"test": "datum.percentage >= 8", "value": "white"},
+          "value": "#243447"
+        }
+      }
+    }
+  ],
+  "config": {
+    "view": {"stroke": null},
+    "title": {
+      "offset": 20,
+      "subtitlePadding": 6,
+      "fontSize": 16,
+      "subtitleFontSize": 13,
+      "subtitleColor": "#4a5563"
+    },
+    "legend": {"labelFontSize": 12, "titleFontSize": 12},
+    "axis": {"labelFontSize": 12, "titleFontSize": 12, "labelLimit": 320}
+  }
+}
