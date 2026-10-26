@@ -27,3 +27,9 @@ vegaEmbed(
   "js/food_insecurity_heatmap.vl.json",
   { actions: false }
 );
+
+vegaEmbed(
+  "#inactivity_map",
+  "js/inactivity_symbol_map.vl.json",
+  { actions: false }
+);
