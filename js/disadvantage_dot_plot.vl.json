@@ -1,83 +1,192 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v6.json",
-  "width": 620,
-  "height": 560,
+  "width": 520,
+  "height": {
+    "step": 70
+  },
   "title": {
-    "text": "Almost half a million Melburnians live with high psychological distress",
-    "subtitle": "Adults (18+) with high or very high psychological distress, Greater Melbourne, 2022 · 1 dot = 200 people",
+    "text": "Severe food insecurity is five times more common in the most disadvantaged areas",
+    "subtitle": "% of households at each level of food insecurity, most vs least disadvantaged 20% of areas, 2023",
     "anchor": "start"
   },
-  "projection": {
-    "type": "conicEqualArea",
-    "parallels": [-18, -36],
-    "rotate": [-132, 0]
+  "data": {
+    "url": "https://raw.githubusercontent.com/rakesh-vis/FIT3179-DV2/refs/heads/main/data/abs_food_security.csv",
+    "format": {
+      "type": "csv"
+    }
+  },
+  "transform": [
+    {
+      "filter": "indexof(datum.characteristic, 'Index of Relative Socio-Economic Disadvantage') === 0 && indexof(['Lowest quintile', 'Highest quintile'], datum.group_label) >= 0 && indexof(['marginal', 'moderate', 'severe'], datum.status) >= 0"
+    },
+    {
+      "calculate": "datum.group_label === 'Lowest quintile' ? 'Most disadvantaged areas' : 'Least disadvantaged areas'",
+      "as": "area_group"
+    },
+    {
+      "calculate": "{'marginal': 'Marginal', 'moderate': 'Moderate', 'severe': 'Severe'}[datum.status]",
+      "as": "level"
+    }
+  ],
+  "encoding": {
+    "y": {
+      "field": "level",
+      "type": "ordinal",
+      "sort": [
+        "Marginal",
+        "Moderate",
+        "Severe"
+      ],
+      "title": null,
+      "axis": {
+        "domain": false,
+        "ticks": false,
+        "labelFontSize": 13,
+        "labelFontWeight": "bold",
+        "labelPadding": 10
+      }
+    }
   },
   "layer": [
     {
-      "data": {
-        "url": "https://raw.githubusercontent.com/rakesh-vis/FIT3179-DV2/refs/heads/main/data/melbourne_lga.topojson",
-        "format": {"type": "topojson", "feature": "melbourne_lga"}
-      },
-      "transform": [
-        {
-          "lookup": "properties.lga_code",
-          "from": {
-            "data": {
-              "url": "https://raw.githubusercontent.com/rakesh-vis/FIT3179-DV2/refs/heads/main/data/lga_health.csv"
-            },
-            "key": "lga_code",
-            "fields": ["distress_number", "distress_rate"]
-          }
-        },
-        {"calculate": "toNumber(datum.distress_rate)", "as": "distress_rate"},
-        {
-          "calculate": "toNumber(datum.distress_number)",
-          "as": "distress_number"
-        }
-      ],
       "mark": {
-        "type": "geoshape",
-        "fill": "#eef0f3",
-        "stroke": "#9aa3ad",
-        "strokeWidth": 0.6
+        "type": "rule",
+        "color": "#c9ced6",
+        "strokeWidth": 4
       },
       "encoding": {
+        "x": {
+          "aggregate": "min",
+          "field": "percentage",
+          "type": "quantitative",
+          "title": "Households (%)",
+          "scale": {
+            "domain": [
+              0,
+              10
+            ]
+          },
+          "axis": {
+            "grid": true,
+            "gridColor": "#eceef1",
+            "domain": false,
+            "values": [
+              0,
+              2,
+              4,
+              6,
+              8,
+              10
+            ],
+            "labelFontSize": 12,
+            "titleFontSize": 12,
+            "titlePadding": 10,
+            "format": ".0f"
+          }
+        },
+        "x2": {
+          "aggregate": "max",
+          "field": "percentage"
+        }
+      }
+    },
+    {
+      "mark": {
+        "type": "circle",
+        "size": 260,
+        "opacity": 1
+      },
+      "encoding": {
+        "x": {
+          "field": "percentage",
+          "type": "quantitative"
+        },
+        "color": {
+          "field": "area_group",
+          "type": "nominal",
+          "title": null,
+          "scale": {
+            "domain": [
+              "Most disadvantaged areas",
+              "Least disadvantaged areas"
+            ],
+            "range": [
+              "#e76f51",
+              "#8a94a3"
+            ]
+          },
+          "legend": {
+            "orient": "top",
+            "direction": "horizontal",
+            "symbolSize": 180,
+            "labelFontSize": 12,
+            "labelLimit": 300
+          }
+        },
         "tooltip": [
-          {"field": "properties.name", "type": "nominal", "title": "LGA"},
           {
-            "field": "distress_number",
-            "type": "quantitative",
-            "title": "Adults with high/very high distress",
-            "format": ",.0f"
+            "field": "area_group",
+            "type": "nominal",
+            "title": "Areas"
           },
           {
-            "field": "distress_rate",
+            "field": "level",
+            "type": "ordinal",
+            "title": "Level"
+          },
+          {
+            "field": "percentage",
             "type": "quantitative",
-            "title": "% of adults",
+            "title": "Households (%)",
             "format": ".1f"
           }
         ]
       }
     },
     {
-      "data": {
-        "url": "https://raw.githubusercontent.com/rakesh-vis/FIT3179-DV2/refs/heads/main/data/melbourne_distress_dots.csv"
-      },
       "mark": {
-        "type": "circle",
-        "size": 5,
-        "color": "#3182bd",
-        "opacity": 0.7,
-        "tooltip": null
+        "type": "text",
+        "dy": -18,
+        "fontSize": 13,
+        "fontWeight": "bold"
       },
       "encoding": {
-        "longitude": {"field": "longitude", "type": "quantitative"},
-        "latitude": {"field": "latitude", "type": "quantitative"}
+        "x": {
+          "field": "percentage",
+          "type": "quantitative"
+        },
+        "text": {
+          "field": "percentage",
+          "type": "quantitative",
+          "format": ".1f"
+        },
+        "color": {
+          "field": "area_group",
+          "type": "nominal",
+          "scale": {
+            "domain": [
+              "Most disadvantaged areas",
+              "Least disadvantaged areas"
+            ],
+            "range": [
+              "#c4532f",
+              "#6b7380"
+            ]
+          },
+          "legend": null
+        }
       }
     }
   ],
+  "resolve": {
+    "scale": {
+      "color": "independent"
+    }
+  },
   "config": {
-    "view": {"stroke": null},
+    "view": {
+      "stroke": null
+    },
     "title": {
       "offset": 20,
       "subtitlePadding": 6,
@@ -85,7 +194,8 @@
       "subtitleFontSize": 13,
       "subtitleColor": "#4a5563"
     },
-    "legend": {"labelFontSize": 12, "titleFontSize": 12},
-    "axis": {"labelFontSize": 12, "titleFontSize": 12}
+    "legend": {
+      "labelFontSize": 12
+    }
   }
 }
