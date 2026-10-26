@@ -21,3 +21,9 @@ vegaEmbed(
   "js/Food.insecurity.waffle.vl.json",
   { actions: false }
 );
+
+vegaEmbed(
+  "#food_heatmap",
+  "js/food_insecurity_heatmap.vl.json",
+  { actions: false }
+);
