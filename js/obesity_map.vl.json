@@ -51,6 +51,10 @@
           "status"
         ]
       }
+    },
+    {
+      "calculate": "toNumber(datum.obesity_rate)",
+      "as": "obesity_rate"
     }
   ],
   "mark": {
