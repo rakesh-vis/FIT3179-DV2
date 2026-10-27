@@ -1,0 +1,205 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v6.json",
+  "title": {
+    "text": "Men take more physical health risks, but women report more psychological distress",
+    "subtitle": "% of Australians with each risk factor, by sex, 2022 · Adults 18+ (*people aged 15+)",
+    "anchor": "start"
+  },
+  "data": {
+    "url": "https://raw.githubusercontent.com/rakesh-vis/FIT3179-DV2/refs/heads/main/data/sex_risk_factors.csv"
+  },
+  "transform": [
+    {"calculate": "toNumber(datum.rate)", "as": "rate"},
+    {
+      "calculate": "{'5+ drinks on one day, at least monthly': 'Risky drinking*', 'Overweight (not obese)': 'Overweight (not obese)', 'Obese': 'Obese', 'Current smoker': 'Smoker', 'Currently vaping': 'Vaping*', 'High or very high psychological distress': 'High psychological distress'}[datum.risk_factor]",
+      "as": "factor"
+    }
+  ],
+  "spacing": 0,
+  "hconcat": [
+    {
+      "title": {
+        "text": "Males",
+        "anchor": "end",
+        "fontSize": 13,
+        "color": "#3182bd"
+      },
+      "width": 260,
+      "height": {"step": 44},
+      "transform": [{"filter": "datum.sex === 'Males'"}],
+      "encoding": {
+        "y": {
+          "field": "factor",
+          "type": "nominal",
+          "sort": [
+            "Risky drinking*",
+            "Overweight (not obese)",
+            "Smoker",
+            "Vaping*",
+            "Obese",
+            "High psychological distress"
+          ],
+          "axis": null
+        },
+        "x": {
+          "field": "rate",
+          "type": "quantitative",
+          "title": null,
+          "scale": {"domain": [0, 42], "reverse": true},
+          "axis": {
+            "values": [0, 10, 20, 30, 40],
+            "grid": true,
+            "gridColor": "#eceef1",
+            "domain": false
+          }
+        },
+        "tooltip": [
+          {"field": "factor", "type": "nominal", "title": "Risk factor"},
+          {"field": "sex", "type": "nominal", "title": "Sex"},
+          {
+            "field": "rate",
+            "type": "quantitative",
+            "title": "% of people",
+            "format": ".1f"
+          }
+        ]
+      },
+      "layer": [
+        {
+          "mark": {
+            "type": "bar",
+            "color": "#3182bd",
+            "cornerRadiusTopLeft": 3,
+            "cornerRadiusBottomLeft": 3,
+            "height": {"band": 0.7}
+          }
+        },
+        {
+          "mark": {
+            "type": "text",
+            "align": "right",
+            "dx": -5,
+            "fontSize": 12,
+            "fontWeight": "bold",
+            "color": "#1f5f8f"
+          },
+          "encoding": {
+            "text": {"field": "rate", "type": "quantitative", "format": ".1f"}
+          }
+        }
+      ]
+    },
+    {
+      "width": 180,
+      "height": {"step": 44},
+      "transform": [{"filter": "datum.sex === 'Males'"}],
+      "mark": {
+        "type": "text",
+        "fontSize": 12.5,
+        "color": "#243447",
+        "fontWeight": "bold"
+      },
+      "encoding": {
+        "y": {
+          "field": "factor",
+          "type": "nominal",
+          "sort": [
+            "Risky drinking*",
+            "Overweight (not obese)",
+            "Smoker",
+            "Vaping*",
+            "Obese",
+            "High psychological distress"
+          ],
+          "axis": null
+        },
+        "text": {"field": "factor", "type": "nominal"}
+      },
+      "view": {"stroke": null}
+    },
+    {
+      "title": {
+        "text": "Females",
+        "anchor": "start",
+        "fontSize": 13,
+        "color": "#c9861f"
+      },
+      "width": 260,
+      "height": {"step": 44},
+      "transform": [{"filter": "datum.sex === 'Females'"}],
+      "encoding": {
+        "y": {
+          "field": "factor",
+          "type": "nominal",
+          "sort": [
+            "Risky drinking*",
+            "Overweight (not obese)",
+            "Smoker",
+            "Vaping*",
+            "Obese",
+            "High psychological distress"
+          ],
+          "axis": null
+        },
+        "x": {
+          "field": "rate",
+          "type": "quantitative",
+          "title": null,
+          "scale": {"domain": [0, 42]},
+          "axis": {
+            "values": [0, 10, 20, 30, 40],
+            "grid": true,
+            "gridColor": "#eceef1",
+            "domain": false
+          }
+        },
+        "tooltip": [
+          {"field": "factor", "type": "nominal", "title": "Risk factor"},
+          {"field": "sex", "type": "nominal", "title": "Sex"},
+          {
+            "field": "rate",
+            "type": "quantitative",
+            "title": "% of people",
+            "format": ".1f"
+          }
+        ]
+      },
+      "layer": [
+        {
+          "mark": {
+            "type": "bar",
+            "color": "#f2a541",
+            "cornerRadiusTopRight": 3,
+            "cornerRadiusBottomRight": 3,
+            "height": {"band": 0.7}
+          }
+        },
+        {
+          "mark": {
+            "type": "text",
+            "align": "left",
+            "dx": 5,
+            "fontSize": 12,
+            "fontWeight": "bold",
+            "color": "#a86a12"
+          },
+          "encoding": {
+            "text": {"field": "rate", "type": "quantitative", "format": ".1f"}
+          }
+        }
+      ]
+    }
+  ],
+  "config": {
+    "view": {"stroke": null},
+    "title": {
+      "offset": 20,
+      "subtitlePadding": 6,
+      "fontSize": 16,
+      "subtitleFontSize": 13,
+      "subtitleColor": "#4a5563"
+    },
+    "axis": {"labelFontSize": 11, "labelColor": "#6b7380"},
+    "concat": {"spacing": 0}
+  }
+}
