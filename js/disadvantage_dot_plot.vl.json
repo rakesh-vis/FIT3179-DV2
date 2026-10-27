@@ -176,6 +176,34 @@
           "legend": null
         }
       }
+    },
+    {
+      "data": {
+        "values": [
+          {}
+        ]
+      },
+      "mark": {
+        "type": "text",
+        "align": "left",
+        "baseline": "middle",
+        "dx": 16,
+        "fontSize": 12,
+        "fontStyle": "italic",
+        "color": "#4a5563"
+      },
+      "encoding": {
+        "x": {
+          "datum": 7.8,
+          "type": "quantitative"
+        },
+        "y": {
+          "datum": "Severe"
+        },
+        "text": {
+          "value": "5 times higher"
+        }
+      }
     }
   ],
   "resolve": {
