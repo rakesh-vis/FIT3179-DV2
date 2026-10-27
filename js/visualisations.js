@@ -57,3 +57,9 @@ vegaEmbed(
   "js/disadvantage_jitter.vl.json",
   { actions: false }
 );
+
+vegaEmbed(
+  "#city_region_slope",
+  "js/city_region_slope.vl.json",
+  { actions: false }
+);
