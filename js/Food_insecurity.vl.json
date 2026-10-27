@@ -1,15 +1,19 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v6.json",
-  "width": 500,
-  "height": 300,
+  "width": 460,
+  "height": {
+    "step": 46
+  },
   "title": {
-    "text": "Food insecurity by household type",
-    "subtitle": "Percentage of Australian households, 2023",
+    "text": "One in three lone-parent households is food insecure",
+    "subtitle": "% of households experiencing food insecurity, by household type, 2023",
     "anchor": "start"
   },
   "data": {
     "url": "https://raw.githubusercontent.com/rakesh-vis/FIT3179-DV2/refs/heads/main/data/abs_food_security.csv",
-    "format": {"type": "csv"}
+    "format": {
+      "type": "csv"
+    }
   },
   "transform": [
     {
@@ -19,35 +23,124 @@
       "filter": "datum.group_label !== 'Family households with dependent children present'"
     },
     {
-      "calculate": "{'Family households with dependent children present, lone parent': 'Lone-parent families (with dependent children)', 'Family households with dependent children present, parent couple': 'Couple-parent families (with dependent children)', 'Family households with no dependent children present': 'Families without dependent children', 'Lone person households': 'Lone-person households', 'Group households(i)': 'Group households'}[datum.group_label] || datum.group_label",
+      "calculate": "{'Family households with dependent children present, lone parent': 'Lone-parent families', 'Family households with dependent children present, parent couple': 'Couple families with children', 'Family households with no dependent children present': 'Families without children', 'Lone person households': 'People living alone', 'Group households(i)': 'Group households (e.g. share houses)'}[datum.group_label] || datum.group_label",
       "as": "short_label"
+    },
+    {
+      "calculate": "toNumber(datum.percentage)",
+      "as": "percentage"
     }
   ],
-  "mark": "bar",
   "encoding": {
-    "x": {
-      "field": "percentage",
-      "type": "quantitative",
-      "title": "Households experiencing food insecurity (%)",
-      "scale": {"zero": true},
-      "axis": {"gridColor": "#E8E8E8"}
-    },
     "y": {
       "field": "short_label",
       "type": "nominal",
       "sort": "-x",
       "title": null,
-      "axis": {"labelLimit": 400}
+      "axis": {
+        "labelLimit": 300,
+        "labelFontSize": 12,
+        "domain": false,
+        "ticks": false,
+        "labelPadding": 8
+      }
+    },
+    "x": {
+      "field": "percentage",
+      "type": "quantitative",
+      "title": "% of households",
+      "scale": {
+        "domain": [
+          0,
+          40
+        ]
+      },
+      "axis": {
+        "grid": true,
+        "gridColor": "#eceef1",
+        "domain": false,
+        "values": [
+          0,
+          10,
+          20,
+          30,
+          40
+        ]
+      }
     },
     "tooltip": [
-      {"field": "short_label", "type": "nominal", "title": "Household type"},
+      {
+        "field": "short_label",
+        "type": "nominal",
+        "title": "Household type"
+      },
       {
         "field": "percentage",
         "type": "quantitative",
-        "title": "Food insecurity rate (%)",
+        "title": "% food insecure",
         "format": ".1f"
       }
     ]
   },
-  "config": {}
+  "layer": [
+    {
+      "mark": {
+        "type": "bar",
+        "cornerRadiusEnd": 3,
+        "height": {
+          "band": 0.7
+        }
+      },
+      "encoding": {
+        "color": {
+          "condition": {
+            "test": "datum.percentage >= 30",
+            "value": "#e76f51"
+          },
+          "value": "#6baed6"
+        }
+      }
+    },
+    {
+      "mark": {
+        "type": "text",
+        "align": "left",
+        "dx": 5,
+        "fontSize": 12,
+        "fontWeight": "bold"
+      },
+      "encoding": {
+        "text": {
+          "field": "percentage",
+          "type": "quantitative",
+          "format": ".1f"
+        },
+        "color": {
+          "condition": {
+            "test": "datum.percentage >= 30",
+            "value": "#c4532f"
+          },
+          "value": "#1f5f8f"
+        }
+      }
+    }
+  ],
+  "config": {
+    "view": {
+      "stroke": null
+    },
+    "title": {
+      "offset": 20,
+      "subtitlePadding": 6,
+      "fontSize": 16,
+      "subtitleFontSize": 13,
+      "subtitleColor": "#4a5563"
+    },
+    "axis": {
+      "labelFontSize": 12,
+      "titleFontSize": 12,
+      "labelColor": "#4a5563",
+      "titleColor": "#4a5563"
+    }
+  }
 }
