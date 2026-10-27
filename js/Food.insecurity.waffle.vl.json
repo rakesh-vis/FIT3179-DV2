@@ -8,7 +8,9 @@
   },
   "data": {
     "url": "https://raw.githubusercontent.com/rakesh-vis/FIT3179-DV2/refs/heads/main/data/abs_food_security.csv",
-    "format": {"type": "csv"}
+    "format": {
+      "type": "csv"
+    }
   },
   "transform": [
     {
@@ -28,24 +30,57 @@
     },
     {
       "joinaggregate": [
-        {"op": "sum", "field": "squares", "as": "insecure_squares"}
+        {
+          "op": "sum",
+          "field": "squares",
+          "as": "insecure_squares"
+        }
       ]
     },
     {
       "calculate": "datum.status === 'food_secure' ? 100 - datum.insecure_squares : datum.squares",
       "as": "squares"
     },
-    {"calculate": "sequence(0, datum.squares)", "as": "square_id"},
-    {"flatten": ["square_id"]},
     {
-      "window": [{"op": "row_number", "as": "position"}],
-      "sort": [{"field": "level_order"}, {"field": "square_id"}]
+      "calculate": "sequence(0, datum.squares)",
+      "as": "square_id"
     },
-    {"calculate": "(datum.position - 1) % 10", "as": "col"},
-    {"calculate": "floor((datum.position - 1) / 10)", "as": "row"}
+    {
+      "flatten": [
+        "square_id"
+      ]
+    },
+    {
+      "window": [
+        {
+          "op": "row_number",
+          "as": "position"
+        }
+      ],
+      "sort": [
+        {
+          "field": "level_order"
+        },
+        {
+          "field": "square_id"
+        }
+      ]
+    },
+    {
+      "calculate": "(datum.position - 1) % 10",
+      "as": "col"
+    },
+    {
+      "calculate": "floor((datum.position - 1) / 10)",
+      "as": "row"
+    }
   ],
-  "width": {"step": 30},
-  "height": {"step": 30},
+  "width": {
+    "step": 30
+  },
+  "height": {
+    "step": 30
+  },
   "mark": {
     "type": "rect",
     "stroke": "white",
@@ -53,21 +88,52 @@
     "cornerRadius": 3
   },
   "encoding": {
-    "x": {"field": "col", "type": "ordinal", "axis": null},
-    "y": {"field": "row", "type": "ordinal", "axis": null},
+    "x": {
+      "field": "col",
+      "type": "ordinal",
+      "axis": null
+    },
+    "y": {
+      "field": "row",
+      "type": "ordinal",
+      "axis": null
+    },
     "color": {
       "field": "level",
       "type": "nominal",
       "title": "Food security status",
-      "sort": ["Severe", "Moderate", "Marginal", "Food secure"],
+      "sort": [
+        "Severe",
+        "Moderate",
+        "Marginal",
+        "Food secure"
+      ],
       "scale": {
-        "domain": ["Severe", "Moderate", "Marginal", "Food secure"],
-        "range": ["#a63a22", "#e76f51", "#f4b6a3", "#dfe3e8"]
+        "domain": [
+          "Severe",
+          "Moderate",
+          "Marginal",
+          "Food secure"
+        ],
+        "range": [
+          "#a63a22",
+          "#e76f51",
+          "#f4b6a3",
+          "#dfe3e8"
+        ]
       },
-      "legend": {"orient": "right", "symbolType": "square", "symbolSize": 200}
+      "legend": {
+        "orient": "right",
+        "symbolType": "square",
+        "symbolSize": 200
+      }
     },
     "tooltip": [
-      {"field": "level", "type": "nominal", "title": "Status"},
+      {
+        "field": "level",
+        "type": "nominal",
+        "title": "Status"
+      },
       {
         "field": "percentage",
         "type": "quantitative",
@@ -76,5 +142,16 @@
       }
     ]
   },
-  "config": {"view": {"stroke": null}}
+  "config": {
+    "view": {
+      "stroke": null
+    },
+    "title": {
+      "offset": 20,
+      "subtitlePadding": 6,
+      "fontSize": 16,
+      "subtitleFontSize": 13,
+      "subtitleColor": "#4a5563"
+    }
+  }
 }
