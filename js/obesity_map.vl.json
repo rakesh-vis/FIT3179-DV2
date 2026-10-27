@@ -31,107 +31,6 @@
       }
     }
   ],
-  "data": {
-    "url": "https://raw.githubusercontent.com/rakesh-vis/FIT3179-DV2/refs/heads/main/data/lga_2021.topojson",
-    "format": {
-      "type": "topojson",
-      "feature": "lga_2021"
-    }
-  },
-  "transform": [
-    {
-      "lookup": "properties.lga_code",
-      "from": {
-        "data": {
-          "url": "https://raw.githubusercontent.com/rakesh-vis/FIT3179-DV2/refs/heads/main/data/lga_obesity.csv",
-          "format": {
-            "type": "csv",
-            "parse": {
-              "lga_code": "string"
-            }
-          }
-        },
-        "key": "lga_code",
-        "fields": [
-          "obesity_rate",
-          "status"
-        ]
-      }
-    },
-    {
-      "calculate": "toNumber(datum.obesity_rate)",
-      "as": "obesity_rate"
-    }
-  ],
-  "mark": {
-    "type": "geoshape",
-    "invalid": null,
-    "stroke": "white",
-    "strokeWidth": 0.3
-  },
-  "encoding": {
-    "color": {
-      "condition": {
-        "test": "!isValid(datum.obesity_rate)",
-        "value": "#d9d9d9"
-      },
-      "field": "obesity_rate",
-      "type": "quantitative",
-      "title": "Adults with obesity (%)",
-      "scale": {
-        "type": "threshold",
-        "domain": [
-          25,
-          30,
-          35,
-          40
-        ],
-        "range": [
-          "#eff3ff",
-          "#bdd7e7",
-          "#6baed6",
-          "#3182bd",
-          "#08519c"
-        ]
-      },
-      "legend": {
-        "type": "symbol",
-        "orient": "bottom-left",
-        "symbolType": "square",
-        "symbolSize": 200
-      }
-    },
-    "tooltip": [
-      {
-        "field": "properties.name",
-        "type": "nominal",
-        "title": "LGA"
-      },
-      {
-        "field": "properties.state",
-        "type": "nominal",
-        "title": "State"
-      },
-      {
-        "field": "obesity_rate",
-        "type": "quantitative",
-        "title": "Adults with obesity (%)",
-        "format": ".1f"
-      },
-      {
-        "field": "status",
-        "type": "nominal",
-        "title": "Estimate status"
-      }
-    ],
-    "opacity": {
-      "condition": {
-        "test": "isValid(datum.obesity_rate) && datum.obesity_rate < min_rate",
-        "value": 0.15
-      },
-      "value": 1
-    }
-  },
   "config": {
     "view": {
       "stroke": null
@@ -143,5 +42,502 @@
       "subtitleFontSize": 13,
       "subtitleColor": "#4a5563"
     }
-  }
+  },
+  "layer": [
+    {
+      "data": {
+        "url": "https://raw.githubusercontent.com/rakesh-vis/FIT3179-DV2/refs/heads/main/data/lga_2021.topojson",
+        "format": {
+          "type": "topojson",
+          "feature": "lga_2021"
+        }
+      },
+      "transform": [
+        {
+          "lookup": "properties.lga_code",
+          "from": {
+            "data": {
+              "url": "https://raw.githubusercontent.com/rakesh-vis/FIT3179-DV2/refs/heads/main/data/lga_obesity.csv",
+              "format": {
+                "type": "csv",
+                "parse": {
+                  "lga_code": "string"
+                }
+              }
+            },
+            "key": "lga_code",
+            "fields": [
+              "obesity_rate",
+              "status"
+            ]
+          }
+        },
+        {
+          "calculate": "toNumber(datum.obesity_rate)",
+          "as": "obesity_rate"
+        }
+      ],
+      "mark": {
+        "type": "geoshape",
+        "invalid": null,
+        "stroke": "white",
+        "strokeWidth": 0.3
+      },
+      "encoding": {
+        "color": {
+          "condition": {
+            "test": "!isValid(datum.obesity_rate)",
+            "value": "#d9d9d9"
+          },
+          "field": "obesity_rate",
+          "type": "quantitative",
+          "title": "Adults with obesity (%)",
+          "scale": {
+            "type": "threshold",
+            "domain": [
+              25,
+              30,
+              35,
+              40
+            ],
+            "range": [
+              "#eff3ff",
+              "#bdd7e7",
+              "#6baed6",
+              "#3182bd",
+              "#08519c"
+            ]
+          },
+          "legend": {
+            "type": "symbol",
+            "orient": "bottom-left",
+            "symbolType": "square",
+            "symbolSize": 200,
+            "titleLimit": 250
+          }
+        },
+        "tooltip": [
+          {
+            "field": "properties.name",
+            "type": "nominal",
+            "title": "LGA"
+          },
+          {
+            "field": "properties.state",
+            "type": "nominal",
+            "title": "State"
+          },
+          {
+            "field": "obesity_rate",
+            "type": "quantitative",
+            "title": "Adults with obesity (%)",
+            "format": ".1f"
+          },
+          {
+            "field": "status",
+            "type": "nominal",
+            "title": "Estimate status"
+          }
+        ],
+        "opacity": {
+          "condition": {
+            "test": "isValid(datum.obesity_rate) && datum.obesity_rate < min_rate",
+            "value": 0.15
+          },
+          "value": 1
+        }
+      }
+    },
+    {
+      "data": {
+        "values": [
+          {
+            "lon": 145.75,
+            "lat": -42.2,
+            "label_lon": 141,
+            "label_lat": -41.3,
+            "align": "right",
+            "label": "Highest: West Coast (Tas.)\n49.5% of adults"
+          },
+          {
+            "lon": 132.25,
+            "lat": -14.75,
+            "label_lon": 125.5,
+            "label_lat": -13,
+            "align": "right",
+            "label": "Katherine (NT)\n48.9%"
+          },
+          {
+            "lon": 138.6,
+            "lat": -34.92,
+            "label_lon": 133,
+            "label_lat": -37.6,
+            "align": "right",
+            "label": "Lowest: City of Adelaide\n15.8%"
+          },
+          {
+            "lon": 151.2,
+            "lat": -33.89,
+            "label_lon": 155.2,
+            "label_lat": -35.6,
+            "align": "left",
+            "label": "City of Sydney\n20.5%"
+          }
+        ]
+      },
+      "mark": {
+        "type": "rule",
+        "color": "#243447",
+        "strokeWidth": 1
+      },
+      "encoding": {
+        "longitude": {
+          "field": "lon",
+          "type": "quantitative"
+        },
+        "latitude": {
+          "field": "lat",
+          "type": "quantitative"
+        },
+        "longitude2": {
+          "field": "label_lon"
+        },
+        "latitude2": {
+          "field": "label_lat"
+        }
+      }
+    },
+    {
+      "data": {
+        "values": [
+          {
+            "lon": 145.75,
+            "lat": -42.2,
+            "label_lon": 141,
+            "label_lat": -41.3,
+            "align": "right",
+            "label": "Highest: West Coast (Tas.)\n49.5% of adults"
+          },
+          {
+            "lon": 132.25,
+            "lat": -14.75,
+            "label_lon": 125.5,
+            "label_lat": -13,
+            "align": "right",
+            "label": "Katherine (NT)\n48.9%"
+          },
+          {
+            "lon": 138.6,
+            "lat": -34.92,
+            "label_lon": 133,
+            "label_lat": -37.6,
+            "align": "right",
+            "label": "Lowest: City of Adelaide\n15.8%"
+          },
+          {
+            "lon": 151.2,
+            "lat": -33.89,
+            "label_lon": 155.2,
+            "label_lat": -35.6,
+            "align": "left",
+            "label": "City of Sydney\n20.5%"
+          }
+        ]
+      },
+      "mark": {
+        "type": "circle",
+        "size": 45,
+        "color": "#243447",
+        "stroke": "white",
+        "strokeWidth": 1.5,
+        "opacity": 1
+      },
+      "encoding": {
+        "longitude": {
+          "field": "lon",
+          "type": "quantitative"
+        },
+        "latitude": {
+          "field": "lat",
+          "type": "quantitative"
+        }
+      }
+    },
+    {
+      "data": {
+        "values": [
+          {
+            "lon": 145.75,
+            "lat": -42.2,
+            "label_lon": 141,
+            "label_lat": -41.3,
+            "align": "right",
+            "label": "Highest: West Coast (Tas.)\n49.5% of adults"
+          },
+          {
+            "lon": 132.25,
+            "lat": -14.75,
+            "label_lon": 125.5,
+            "label_lat": -13,
+            "align": "right",
+            "label": "Katherine (NT)\n48.9%"
+          },
+          {
+            "lon": 138.6,
+            "lat": -34.92,
+            "label_lon": 133,
+            "label_lat": -37.6,
+            "align": "right",
+            "label": "Lowest: City of Adelaide\n15.8%"
+          },
+          {
+            "lon": 151.2,
+            "lat": -33.89,
+            "label_lon": 155.2,
+            "label_lat": -35.6,
+            "align": "left",
+            "label": "City of Sydney\n20.5%"
+          }
+        ]
+      },
+      "transform": [
+        {
+          "filter": "datum.align === 'left'"
+        }
+      ],
+      "mark": {
+        "type": "text",
+        "align": "left",
+        "dx": 4,
+        "baseline": "middle",
+        "lineBreak": "\n",
+        "fontSize": 11.5,
+        "fontWeight": "bold",
+        "color": "#243447",
+        "stroke": "white",
+        "strokeWidth": 3.5,
+        "strokeJoin": "round",
+        "opacity": 0.9
+      },
+      "encoding": {
+        "longitude": {
+          "field": "label_lon",
+          "type": "quantitative"
+        },
+        "latitude": {
+          "field": "label_lat",
+          "type": "quantitative"
+        },
+        "text": {
+          "field": "label",
+          "type": "nominal"
+        }
+      }
+    },
+    {
+      "data": {
+        "values": [
+          {
+            "lon": 145.75,
+            "lat": -42.2,
+            "label_lon": 141,
+            "label_lat": -41.3,
+            "align": "right",
+            "label": "Highest: West Coast (Tas.)\n49.5% of adults"
+          },
+          {
+            "lon": 132.25,
+            "lat": -14.75,
+            "label_lon": 125.5,
+            "label_lat": -13,
+            "align": "right",
+            "label": "Katherine (NT)\n48.9%"
+          },
+          {
+            "lon": 138.6,
+            "lat": -34.92,
+            "label_lon": 133,
+            "label_lat": -37.6,
+            "align": "right",
+            "label": "Lowest: City of Adelaide\n15.8%"
+          },
+          {
+            "lon": 151.2,
+            "lat": -33.89,
+            "label_lon": 155.2,
+            "label_lat": -35.6,
+            "align": "left",
+            "label": "City of Sydney\n20.5%"
+          }
+        ]
+      },
+      "transform": [
+        {
+          "filter": "datum.align === 'left'"
+        }
+      ],
+      "mark": {
+        "type": "text",
+        "align": "left",
+        "dx": 4,
+        "baseline": "middle",
+        "lineBreak": "\n",
+        "fontSize": 11.5,
+        "fontWeight": "bold",
+        "color": "#243447"
+      },
+      "encoding": {
+        "longitude": {
+          "field": "label_lon",
+          "type": "quantitative"
+        },
+        "latitude": {
+          "field": "label_lat",
+          "type": "quantitative"
+        },
+        "text": {
+          "field": "label",
+          "type": "nominal"
+        }
+      }
+    },
+    {
+      "data": {
+        "values": [
+          {
+            "lon": 145.75,
+            "lat": -42.2,
+            "label_lon": 141,
+            "label_lat": -41.3,
+            "align": "right",
+            "label": "Highest: West Coast (Tas.)\n49.5% of adults"
+          },
+          {
+            "lon": 132.25,
+            "lat": -14.75,
+            "label_lon": 125.5,
+            "label_lat": -13,
+            "align": "right",
+            "label": "Katherine (NT)\n48.9%"
+          },
+          {
+            "lon": 138.6,
+            "lat": -34.92,
+            "label_lon": 133,
+            "label_lat": -37.6,
+            "align": "right",
+            "label": "Lowest: City of Adelaide\n15.8%"
+          },
+          {
+            "lon": 151.2,
+            "lat": -33.89,
+            "label_lon": 155.2,
+            "label_lat": -35.6,
+            "align": "left",
+            "label": "City of Sydney\n20.5%"
+          }
+        ]
+      },
+      "transform": [
+        {
+          "filter": "datum.align === 'right'"
+        }
+      ],
+      "mark": {
+        "type": "text",
+        "align": "right",
+        "dx": -4,
+        "baseline": "middle",
+        "lineBreak": "\n",
+        "fontSize": 11.5,
+        "fontWeight": "bold",
+        "color": "#243447",
+        "stroke": "white",
+        "strokeWidth": 3.5,
+        "strokeJoin": "round",
+        "opacity": 0.9
+      },
+      "encoding": {
+        "longitude": {
+          "field": "label_lon",
+          "type": "quantitative"
+        },
+        "latitude": {
+          "field": "label_lat",
+          "type": "quantitative"
+        },
+        "text": {
+          "field": "label",
+          "type": "nominal"
+        }
+      }
+    },
+    {
+      "data": {
+        "values": [
+          {
+            "lon": 145.75,
+            "lat": -42.2,
+            "label_lon": 141,
+            "label_lat": -41.3,
+            "align": "right",
+            "label": "Highest: West Coast (Tas.)\n49.5% of adults"
+          },
+          {
+            "lon": 132.25,
+            "lat": -14.75,
+            "label_lon": 125.5,
+            "label_lat": -13,
+            "align": "right",
+            "label": "Katherine (NT)\n48.9%"
+          },
+          {
+            "lon": 138.6,
+            "lat": -34.92,
+            "label_lon": 133,
+            "label_lat": -37.6,
+            "align": "right",
+            "label": "Lowest: City of Adelaide\n15.8%"
+          },
+          {
+            "lon": 151.2,
+            "lat": -33.89,
+            "label_lon": 155.2,
+            "label_lat": -35.6,
+            "align": "left",
+            "label": "City of Sydney\n20.5%"
+          }
+        ]
+      },
+      "transform": [
+        {
+          "filter": "datum.align === 'right'"
+        }
+      ],
+      "mark": {
+        "type": "text",
+        "align": "right",
+        "dx": -4,
+        "baseline": "middle",
+        "lineBreak": "\n",
+        "fontSize": 11.5,
+        "fontWeight": "bold",
+        "color": "#243447"
+      },
+      "encoding": {
+        "longitude": {
+          "field": "label_lon",
+          "type": "quantitative"
+        },
+        "latitude": {
+          "field": "label_lat",
+          "type": "quantitative"
+        },
+        "text": {
+          "field": "label",
+          "type": "nominal"
+        }
+      }
+    }
+  ]
 }
