@@ -199,11 +199,6 @@ p {
   color: #3182bd;
 }
  
-.todo {
-  background-color: #fff3c4;
-  border: 1px dashed #f2a541;
-  padding: 6px 10px;
-}
  
 /* ---------- Small screens: stack the columns ---------- */
 @media (max-width: 767px) {
