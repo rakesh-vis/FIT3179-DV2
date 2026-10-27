@@ -1,3 +1,4 @@
+
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v6.json",
   "width": 520,
@@ -141,6 +142,28 @@
             "value": "#c4532f"
           },
           "value": "#1f5f8f"
+        }
+      }
+    },
+    {
+      "transform": [
+        {
+          "filter": "datum.group_label === 'Lowest quintile'"
+        }
+      ],
+      "mark": {
+        "type": "text",
+        "align": "left",
+        "baseline": "middle",
+        "dx": 16,
+        "fontSize": 12,
+        "fontStyle": "italic",
+        "color": "#4a5563",
+        "lineBreak": "\n"
+      },
+      "encoding": {
+        "text": {
+          "value": "6 times the rate of the\nhighest-income households (3.6%)"
         }
       }
     }
