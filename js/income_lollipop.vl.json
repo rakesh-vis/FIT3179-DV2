@@ -1,57 +1,166 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v6.json",
-  "width": 600,
+  "width": 520,
   "height": 280,
   "title": {
-    "text": "Food insecurity across household income groups",
-    "subtitle": "Australian households, 2023",
+    "text": "Food insecurity is six times higher in the lowest-income households",
+    "subtitle": "% of households experiencing food insecurity, by household income group (fifths), 2023",
     "anchor": "start"
   },
   "data": {
     "url": "https://raw.githubusercontent.com/rakesh-vis/FIT3179-DV2/refs/heads/main/data/abs_food_security.csv",
-    "format": {"type": "csv"}
+    "format": {
+      "type": "csv"
+    }
   },
   "transform": [
     {
       "filter": "datum.characteristic === 'Equivalised gross weekly household income quintiles(h)' && datum.status === 'total_food_insecure'"
+    },
+    {
+      "calculate": "toNumber(datum.percentage)",
+      "as": "percentage"
+    },
+    {
+      "calculate": "{'Lowest quintile': 'Lowest 20%', '2nd quintile': '2nd 20%', '3rd quintile': 'Middle 20%', '4th quintile': '4th 20%', 'Highest quintile': 'Highest 20%'}[datum.group_label]",
+      "as": "income_group"
     }
   ],
   "encoding": {
     "x": {
-      "field": "group_label",
+      "field": "income_group",
       "type": "ordinal",
       "sort": [
-        "Lowest quintile",
-        "2nd quintile",
-        "3rd quintile",
-        "4th quintile",
-        "Highest quintile"
+        "Lowest 20%",
+        "2nd 20%",
+        "Middle 20%",
+        "4th 20%",
+        "Highest 20%"
       ],
-      "title": "Household income quintile (%)",
-      "axis": {"labelAngle": 0}
+      "title": "Household income group",
+      "axis": {
+        "labelAngle": 0,
+        "domain": false,
+        "ticks": false,
+        "labelPadding": 8,
+        "titlePadding": 12
+      }
     },
     "y": {
       "field": "percentage",
       "type": "quantitative",
-      "title": "Households experiencing food insecurity (%)",
-      "scale": {"zero": true}
+      "title": "% of households",
+      "scale": {
+        "domain": [
+          0,
+          25
+        ]
+      },
+      "axis": {
+        "grid": true,
+        "gridColor": "#eceef1",
+        "domain": false,
+        "values": [
+          0,
+          5,
+          10,
+          15,
+          20,
+          25
+        ]
+      }
     },
     "tooltip": [
-      {"field": "group_label", "type": "nominal", "title": "Income group"},
+      {
+        "field": "income_group",
+        "type": "nominal",
+        "title": "Income group"
+      },
       {
         "field": "percentage",
         "type": "quantitative",
-        "title": "Food insecurity rate (%)",
+        "title": "% food insecure",
         "format": ".1f"
       }
     ]
   },
   "layer": [
     {
-      "mark": {"type": "rule", "strokeWidth": 3, "color": "#4E79A7"},
-      "encoding": {"y": {"datum": 0}, "y2": {"field": "percentage"}}
+      "mark": {
+        "type": "rule",
+        "strokeWidth": 3
+      },
+      "encoding": {
+        "y": {
+          "datum": 0
+        },
+        "y2": {
+          "field": "percentage"
+        },
+        "color": {
+          "condition": {
+            "test": "datum.group_label === 'Lowest quintile'",
+            "value": "#e76f51"
+          },
+          "value": "#6baed6"
+        }
+      }
     },
-    {"mark": {"type": "point", "filled": true, "size": 150, "color": "#4E79A7"}}
+    {
+      "mark": {
+        "type": "circle",
+        "size": 220,
+        "opacity": 1
+      },
+      "encoding": {
+        "color": {
+          "condition": {
+            "test": "datum.group_label === 'Lowest quintile'",
+            "value": "#e76f51"
+          },
+          "value": "#3182bd"
+        }
+      }
+    },
+    {
+      "mark": {
+        "type": "text",
+        "dy": -18,
+        "fontSize": 12,
+        "fontWeight": "bold"
+      },
+      "encoding": {
+        "text": {
+          "field": "percentage",
+          "type": "quantitative",
+          "format": ".1f"
+        },
+        "color": {
+          "condition": {
+            "test": "datum.group_label === 'Lowest quintile'",
+            "value": "#c4532f"
+          },
+          "value": "#1f5f8f"
+        }
+      }
+    }
   ],
-  "config": {}
+  "config": {
+    "view": {
+      "stroke": null
+    },
+    "title": {
+      "offset": 20,
+      "subtitlePadding": 6,
+      "fontSize": 16,
+      "subtitleFontSize": 13,
+      "subtitleColor": "#4a5563"
+    },
+    "axis": {
+      "labelFontSize": 12,
+      "titleFontSize": 12,
+      "labelColor": "#4a5563",
+      "titleColor": "#4a5563"
+    }
+  }
 }
