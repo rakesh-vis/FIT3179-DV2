@@ -9,8 +9,14 @@
   },
   "projection": {
     "type": "conicEqualArea",
-    "parallels": [ -18, -36],
-    "rotate": [-132, 0]
+    "parallels": [
+      -18,
+      -36
+    ],
+    "rotate": [
+      -132,
+      0
+    ]
   },
   "params": [
     {
@@ -129,6 +135,13 @@
   "config": {
     "view": {
       "stroke": null
+    },
+    "title": {
+      "offset": 20,
+      "subtitlePadding": 6,
+      "fontSize": 16,
+      "subtitleFontSize": 13,
+      "subtitleColor": "#4a5563"
     }
   }
 }
