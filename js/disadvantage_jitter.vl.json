@@ -1,0 +1,196 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v6.json",
+  "width": 560,
+  "height": {"step": 70},
+  "title": {
+    "text": "The more disadvantaged the area, the worse its health",
+    "subtitle": "Each dot is a Local Government Area, grouped into fifths by socio-economic disadvantage · Line = median, 2022",
+    "anchor": "start"
+  },
+  "params": [
+    {
+      "name": "measure",
+      "value": "smoking_rate",
+      "bind": {
+        "input": "select",
+        "options": [
+          "smoking_rate",
+          "obesity_rate",
+          "distress_rate",
+          "inactive_rate"
+        ],
+        "labels": [
+          "Current smokers",
+          "Obesity",
+          "High psychological distress",
+          "Not meeting activity guidelines"
+        ],
+        "name": "Show: "
+      }
+    }
+  ],
+  "data": {
+    "url": "https://raw.githubusercontent.com/rakesh-vis/FIT3179-DV2/refs/heads/main/data/lga_health.csv"
+  },
+  "transform": [
+    {"calculate": "toNumber(datum.irsd_score)", "as": "irsd"},
+    {"calculate": "toNumber(datum[measure])", "as": "value"},
+    {"filter": "isValid(datum.irsd) && isValid(datum.value)"},
+    {
+      "window": [{"op": "ntile", "param": 5, "as": "fifth"}],
+      "sort": [{"field": "irsd", "order": "ascending"}]
+    },
+    {
+      "calculate": "['', 'Most disadvantaged', '2nd fifth', 'Middle fifth', '4th fifth', 'Least disadvantaged'][datum.fifth]",
+      "as": "group"
+    },
+    {
+      "calculate": "(toNumber(datum.lga_code) * 7919 % 1000) / 1000",
+      "as": "jitter"
+    },
+    {
+      "calculate": "{'smoking_rate': 'Current smokers', 'obesity_rate': 'Obesity', 'distress_rate': 'High psychological distress', 'inactive_rate': 'Not meeting activity guidelines'}[measure]",
+      "as": "measure_label"
+    },
+    {
+      "calculate": "{'smoking_rate': [0, 40], 'obesity_rate': [15, 55], 'distress_rate': [5, 35], 'inactive_rate': [55, 95]}[measure][1]",
+      "as": "x_max"
+    },
+    {"calculate": "datum.value > datum.x_max", "as": "off_scale"}
+  ],
+  "encoding": {
+    "y": {
+      "field": "group",
+      "type": "ordinal",
+      "sort": [
+        "Most disadvantaged",
+        "2nd fifth",
+        "Middle fifth",
+        "4th fifth",
+        "Least disadvantaged"
+      ],
+      "title": null,
+      "axis": {
+        "domain": false,
+        "ticks": false,
+        "labelFontSize": 12,
+        "labelFontWeight": "bold",
+        "labelPadding": 8,
+        "labelLimit": 200
+      }
+    },
+    "x": {
+      "field": "value",
+      "type": "quantitative",
+      "title": "% of people in the LGA",
+      "scale": {
+        "domain": {
+          "expr": "{'smoking_rate': [0, 40], 'obesity_rate': [15, 55], 'distress_rate': [5, 35], 'inactive_rate': [55, 95]}[measure]"
+        }
+      },
+      "axis": {"grid": true, "gridColor": "#eceef1", "domain": false}
+    }
+  },
+  "layer": [
+    {
+      "mark": {
+        "type": "circle",
+        "size": 36,
+        "opacity": 0.55,
+        "color": "#8a94a3"
+      },
+      "encoding": {
+        "yOffset": {
+          "field": "jitter",
+          "type": "quantitative",
+          "scale": {"domain": [-0.3, 1.3]}
+        },
+        "tooltip": [
+          {"field": "lga_name", "type": "nominal", "title": "LGA"},
+          {"field": "state", "type": "nominal", "title": "State"},
+          {"field": "measure_label", "type": "nominal", "title": "Measure"},
+          {
+            "field": "value",
+            "type": "quantitative",
+            "title": "% of people",
+            "format": ".1f"
+          },
+          {"field": "group", "type": "nominal", "title": "Disadvantage group"}
+        ]
+      },
+      "transform": [{"filter": "!datum.off_scale"}]
+    },
+    {
+      "mark": {"type": "tick", "color": "#e76f51", "thickness": 4, "size": 46},
+      "encoding": {
+        "x": {"aggregate": "median", "field": "value", "type": "quantitative"},
+        "tooltip": [
+          {"field": "group", "type": "nominal", "title": "Disadvantage group"},
+          {
+            "aggregate": "median",
+            "field": "value",
+            "type": "quantitative",
+            "title": "Median %",
+            "format": ".1f"
+          }
+        ]
+      }
+    },
+    {
+      "mark": {
+        "type": "text",
+        "dy": -30,
+        "fontSize": 12,
+        "fontWeight": "bold",
+        "color": "#c4532f"
+      },
+      "encoding": {
+        "x": {"aggregate": "median", "field": "value", "type": "quantitative"},
+        "text": {
+          "aggregate": "median",
+          "field": "value",
+          "type": "quantitative",
+          "format": ".1f"
+        }
+      }
+    },
+    {
+      "transform": [
+        {"filter": "datum.off_scale"},
+        {
+          "calculate": "'Not shown: ' + datum.lga_name + ' (' + format(datum.value, '.1f') + '%), a very small population estimate'",
+          "as": "note"
+        }
+      ],
+      "mark": {
+        "type": "text",
+        "align": "right",
+        "baseline": "bottom",
+        "fontSize": 11,
+        "fontStyle": "italic",
+        "color": "#6b7380",
+        "dy": -4
+      },
+      "encoding": {
+        "x": {
+          "datum": {
+            "expr": "{'smoking_rate': [0, 40], 'obesity_rate': [15, 55], 'distress_rate': [5, 35], 'inactive_rate': [55, 95]}[measure][1]"
+          }
+        },
+        "text": {"field": "note"},
+        "yOffset": {"value": -30}
+      }
+    }
+  ],
+  "config": {
+    "view": {"stroke": null},
+    "title": {
+      "offset": 20,
+      "subtitlePadding": 6,
+      "fontSize": 16,
+      "subtitleFontSize": 13,
+      "subtitleColor": "#4a5563"
+    },
+    "axis": {"labelFontSize": 12, "titleFontSize": 12}
+  }
+}
