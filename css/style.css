@@ -1,0 +1,211 @@
+/* ---------- Base ---------- */
+body,
+body * {
+  font-family: 'Source Sans 3', Arial, sans-serif;
+}
+ 
+body {
+  background-color: #f5f7fa;
+  color: #243447;
+  margin: 0;
+}
+ 
+.page {
+  max-width: 1140px;
+  margin: 0 auto;
+  padding: 0 30px 60px 30px;
+}
+ 
+p {
+  font-size: 17px;
+  line-height: 1.6;
+}
+ 
+/* ---------- Header ---------- */
+.header {
+  background-color: #08519c;
+  color: white;
+  padding: 70px 30px 60px 30px;
+  text-align: center;
+}
+ 
+.header h1 {
+  font-family: 'Merriweather', Georgia, serif;
+  font-size: 50px;
+  font-weight: 900;
+  line-height: 1.15;
+  letter-spacing: -1px;
+  margin: 0 0 18px 0;
+}
+ 
+.header .standfirst {
+  font-size: 21px;
+  max-width: 760px;
+  margin: 0 auto 18px auto;
+  color: #dbe8f5;
+}
+ 
+.header .byline {
+  font-size: 14px;
+  color: #bdd7e7;
+  margin: 0;
+}
+ 
+/* ---------- Intro ---------- */
+.intro {
+  max-width: 760px;
+  margin: 50px auto 10px auto;
+}
+ 
+.intro p {
+  font-size: 19px;
+}
+ 
+/* ---------- Section headings ---------- */
+.section-heading {
+  margin-top: 70px;
+  margin-bottom: 10px;
+  border-top: 3px solid #3182bd;
+  padding-top: 18px;
+}
+ 
+.section-heading .kicker {
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: #3182bd;
+  margin: 0 0 6px 0;
+}
+ 
+.section-heading h2 {
+  font-family: 'Merriweather', Georgia, serif;
+  font-size: 30px;
+  margin: 0;
+}
+ 
+/* ---------- Rows of text + chart (Pure.css grid) ---------- */
+.pure-g {
+  margin-top: 35px;
+}
+ 
+.description h3 {
+  font-size: 21px;
+  margin-top: 0;
+  margin-bottom: 8px;
+}
+ 
+.description-left {
+  padding-right: 30px;
+}
+ 
+.description-right {
+  padding-left: 30px;
+}
+ 
+.description-top {
+  max-width: 760px;
+  margin-bottom: 15px;
+}
+ 
+/* White card around every chart */
+.vis-container {
+  background-color: white;
+  padding: 25px;
+  border-radius: 10px;
+  box-shadow: 0 1px 3px rgba(36, 52, 71, 0.08);
+  overflow-x: auto;
+}
+ 
+/* vega-embed makes the chart div inline-block; make the white card fill its column */
+.vis-container.vega-embed {
+  display: block;
+}
+ 
+/* Text under each chart */
+.source {
+  font-size: 13px;
+  line-height: 1.4;
+  color: #6b7380;
+  margin: 8px 0 0 4px;
+}
+ 
+.hint {
+  font-size: 14px;
+  font-style: italic;
+  color: #4a5563;
+  margin: 0 0 10px 0;
+}
+ 
+/* Dropdown menus created by Vega-Lite params */
+.vega-bindings {
+  margin-top: 12px;
+}
+ 
+.vega-bind-name {
+  font-weight: 700;
+  font-size: 14px;
+  margin-right: 6px;
+}
+ 
+.vega-bind select,
+.vega-bind input {
+  font-size: 14px;
+  padding: 4px 6px;
+  border: 1px solid #c9ced6;
+  border-radius: 6px;
+}
+ 
+/* ---------- Conclusion + sources ---------- */
+.conclusion {
+  max-width: 760px;
+  margin: 70px auto 0 auto;
+  padding: 30px 35px;
+  background-color: #eff3ff;
+  border-left: 5px solid #3182bd;
+  border-radius: 6px;
+}
+ 
+.conclusion h2 {
+  font-family: 'Merriweather', Georgia, serif;
+  margin-top: 0;
+}
+ 
+.sources {
+  margin-top: 60px;
+  border-top: 1px solid #c9ced6;
+  padding-top: 20px;
+}
+ 
+.sources h2 {
+  font-size: 20px;
+}
+ 
+.sources p,
+.sources li {
+  font-size: 14px;
+  line-height: 1.5;
+  color: #4a5563;
+}
+ 
+.sources a {
+  color: #3182bd;
+}
+ 
+/* Placeholder text you still need to write: delete this class once done */
+.todo {
+  background-color: #fff3c4;
+  border: 1px dashed #f2a541;
+  padding: 6px 10px;
+}
+ 
+/* ---------- Small screens: stack the columns ---------- */
+@media (max-width: 767px) {
+  .description-left,
+  .description-right {
+    padding: 0 0 15px 0;
+  }
+  .header h1 {
+    font-size: 36px;
+  }
+}
