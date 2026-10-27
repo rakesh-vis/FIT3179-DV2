@@ -1,0 +1,13 @@
+risk_factor,sex,rate
+High or very high psychological distress,Males,11.16
+High or very high psychological distress,Females,16.11
+Obese,Males,32.68
+Obese,Females,30.7
+Overweight (not obese),Males,38.78
+Overweight (not obese),Females,29.38
+Current smoker,Males,14.53
+Current smoker,Females,9.92
+Currently vaping,Males,5.17
+Currently vaping,Females,3.12
+"5+ drinks on one day, at least monthly",Males,27.48
+"5+ drinks on one day, at least monthly",Females,12.09
