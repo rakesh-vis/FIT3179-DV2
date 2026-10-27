@@ -1,3 +1,4 @@
+
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v6.json",
   "width": 620,
@@ -9,14 +10,23 @@
   },
   "projection": {
     "type": "conicEqualArea",
-    "parallels": [-18, -36],
-    "rotate": [-132, 0]
+    "parallels": [
+      -18,
+      -36
+    ],
+    "rotate": [
+      -132,
+      0
+    ]
   },
   "layer": [
     {
       "data": {
         "url": "https://raw.githubusercontent.com/rakesh-vis/FIT3179-DV2/refs/heads/main/data/melbourne_lga.topojson",
-        "format": {"type": "topojson", "feature": "melbourne_lga"}
+        "format": {
+          "type": "topojson",
+          "feature": "melbourne_lga"
+        }
       },
       "transform": [
         {
@@ -26,10 +36,16 @@
               "url": "https://raw.githubusercontent.com/rakesh-vis/FIT3179-DV2/refs/heads/main/data/lga_health.csv"
             },
             "key": "lga_code",
-            "fields": ["distress_number", "distress_rate"]
+            "fields": [
+              "distress_number",
+              "distress_rate"
+            ]
           }
         },
-        {"calculate": "toNumber(datum.distress_rate)", "as": "distress_rate"},
+        {
+          "calculate": "toNumber(datum.distress_rate)",
+          "as": "distress_rate"
+        },
         {
           "calculate": "toNumber(datum.distress_number)",
           "as": "distress_number"
@@ -43,7 +59,11 @@
       },
       "encoding": {
         "tooltip": [
-          {"field": "properties.name", "type": "nominal", "title": "LGA"},
+          {
+            "field": "properties.name",
+            "type": "nominal",
+            "title": "LGA"
+          },
           {
             "field": "distress_number",
             "type": "quantitative",
@@ -71,13 +91,412 @@
         "tooltip": null
       },
       "encoding": {
-        "longitude": {"field": "longitude", "type": "quantitative"},
-        "latitude": {"field": "latitude", "type": "quantitative"}
+        "longitude": {
+          "field": "longitude",
+          "type": "quantitative"
+        },
+        "latitude": {
+          "field": "latitude",
+          "type": "quantitative"
+        }
+      }
+    },
+    {
+      "data": {
+        "values": [
+          {
+            "lon": 145.31,
+            "lat": -38.11,
+            "label_lon": 145.62,
+            "label_lat": -38.2,
+            "align": "left",
+            "label": "Casey: 38,200 people,\nthe most of any council"
+          },
+          {
+            "lon": 145.17,
+            "lat": -38.13,
+            "label_lon": 144.82,
+            "label_lat": -38.22,
+            "align": "right",
+            "label": "Frankston: highest rate,\n15.6% of adults"
+          },
+          {
+            "lon": 145.02,
+            "lat": -37.94,
+            "label_lon": 144.86,
+            "label_lat": -38,
+            "align": "right",
+            "label": "Bayside: lowest rate,\n8.8% of adults"
+          },
+          {
+            "lon": 144.963,
+            "lat": -37.814,
+            "label_lon": 144.66,
+            "label_lat": -37.7,
+            "align": "right",
+            "label": "Melbourne CBD"
+          }
+        ]
+      },
+      "mark": {
+        "type": "rule",
+        "color": "#243447",
+        "strokeWidth": 1
+      },
+      "encoding": {
+        "longitude": {
+          "field": "lon",
+          "type": "quantitative"
+        },
+        "latitude": {
+          "field": "lat",
+          "type": "quantitative"
+        },
+        "longitude2": {
+          "field": "label_lon"
+        },
+        "latitude2": {
+          "field": "label_lat"
+        }
+      }
+    },
+    {
+      "data": {
+        "values": [
+          {
+            "lon": 145.31,
+            "lat": -38.11,
+            "label_lon": 145.62,
+            "label_lat": -38.2,
+            "align": "left",
+            "label": "Casey: 38,200 people,\nthe most of any council"
+          },
+          {
+            "lon": 145.17,
+            "lat": -38.13,
+            "label_lon": 144.82,
+            "label_lat": -38.22,
+            "align": "right",
+            "label": "Frankston: highest rate,\n15.6% of adults"
+          },
+          {
+            "lon": 145.02,
+            "lat": -37.94,
+            "label_lon": 144.86,
+            "label_lat": -38,
+            "align": "right",
+            "label": "Bayside: lowest rate,\n8.8% of adults"
+          },
+          {
+            "lon": 144.963,
+            "lat": -37.814,
+            "label_lon": 144.66,
+            "label_lat": -37.7,
+            "align": "right",
+            "label": "Melbourne CBD"
+          }
+        ]
+      },
+      "mark": {
+        "type": "circle",
+        "size": 45,
+        "color": "#243447",
+        "stroke": "white",
+        "strokeWidth": 1.5,
+        "opacity": 1
+      },
+      "encoding": {
+        "longitude": {
+          "field": "lon",
+          "type": "quantitative"
+        },
+        "latitude": {
+          "field": "lat",
+          "type": "quantitative"
+        }
+      }
+    },
+    {
+      "data": {
+        "values": [
+          {
+            "lon": 145.31,
+            "lat": -38.11,
+            "label_lon": 145.62,
+            "label_lat": -38.2,
+            "align": "left",
+            "label": "Casey: 38,200 people,\nthe most of any council"
+          },
+          {
+            "lon": 145.17,
+            "lat": -38.13,
+            "label_lon": 144.82,
+            "label_lat": -38.22,
+            "align": "right",
+            "label": "Frankston: highest rate,\n15.6% of adults"
+          },
+          {
+            "lon": 145.02,
+            "lat": -37.94,
+            "label_lon": 144.86,
+            "label_lat": -38,
+            "align": "right",
+            "label": "Bayside: lowest rate,\n8.8% of adults"
+          },
+          {
+            "lon": 144.963,
+            "lat": -37.814,
+            "label_lon": 144.66,
+            "label_lat": -37.7,
+            "align": "right",
+            "label": "Melbourne CBD"
+          }
+        ]
+      },
+      "transform": [
+        {
+          "filter": "datum.align === 'left'"
+        }
+      ],
+      "mark": {
+        "type": "text",
+        "align": "left",
+        "dx": 4,
+        "baseline": "middle",
+        "lineBreak": "\n",
+        "fontSize": 11.5,
+        "fontWeight": "bold",
+        "color": "#243447",
+        "stroke": "white",
+        "strokeWidth": 3.5,
+        "strokeJoin": "round",
+        "opacity": 0.9
+      },
+      "encoding": {
+        "longitude": {
+          "field": "label_lon",
+          "type": "quantitative"
+        },
+        "latitude": {
+          "field": "label_lat",
+          "type": "quantitative"
+        },
+        "text": {
+          "field": "label",
+          "type": "nominal"
+        }
+      }
+    },
+    {
+      "data": {
+        "values": [
+          {
+            "lon": 145.31,
+            "lat": -38.11,
+            "label_lon": 145.62,
+            "label_lat": -38.2,
+            "align": "left",
+            "label": "Casey: 38,200 people,\nthe most of any council"
+          },
+          {
+            "lon": 145.17,
+            "lat": -38.13,
+            "label_lon": 144.82,
+            "label_lat": -38.22,
+            "align": "right",
+            "label": "Frankston: highest rate,\n15.6% of adults"
+          },
+          {
+            "lon": 145.02,
+            "lat": -37.94,
+            "label_lon": 144.86,
+            "label_lat": -38,
+            "align": "right",
+            "label": "Bayside: lowest rate,\n8.8% of adults"
+          },
+          {
+            "lon": 144.963,
+            "lat": -37.814,
+            "label_lon": 144.66,
+            "label_lat": -37.7,
+            "align": "right",
+            "label": "Melbourne CBD"
+          }
+        ]
+      },
+      "transform": [
+        {
+          "filter": "datum.align === 'left'"
+        }
+      ],
+      "mark": {
+        "type": "text",
+        "align": "left",
+        "dx": 4,
+        "baseline": "middle",
+        "lineBreak": "\n",
+        "fontSize": 11.5,
+        "fontWeight": "bold",
+        "color": "#243447"
+      },
+      "encoding": {
+        "longitude": {
+          "field": "label_lon",
+          "type": "quantitative"
+        },
+        "latitude": {
+          "field": "label_lat",
+          "type": "quantitative"
+        },
+        "text": {
+          "field": "label",
+          "type": "nominal"
+        }
+      }
+    },
+    {
+      "data": {
+        "values": [
+          {
+            "lon": 145.31,
+            "lat": -38.11,
+            "label_lon": 145.62,
+            "label_lat": -38.2,
+            "align": "left",
+            "label": "Casey: 38,200 people,\nthe most of any council"
+          },
+          {
+            "lon": 145.17,
+            "lat": -38.13,
+            "label_lon": 144.82,
+            "label_lat": -38.22,
+            "align": "right",
+            "label": "Frankston: highest rate,\n15.6% of adults"
+          },
+          {
+            "lon": 145.02,
+            "lat": -37.94,
+            "label_lon": 144.86,
+            "label_lat": -38,
+            "align": "right",
+            "label": "Bayside: lowest rate,\n8.8% of adults"
+          },
+          {
+            "lon": 144.963,
+            "lat": -37.814,
+            "label_lon": 144.66,
+            "label_lat": -37.7,
+            "align": "right",
+            "label": "Melbourne CBD"
+          }
+        ]
+      },
+      "transform": [
+        {
+          "filter": "datum.align === 'right'"
+        }
+      ],
+      "mark": {
+        "type": "text",
+        "align": "right",
+        "dx": -4,
+        "baseline": "middle",
+        "lineBreak": "\n",
+        "fontSize": 11.5,
+        "fontWeight": "bold",
+        "color": "#243447",
+        "stroke": "white",
+        "strokeWidth": 3.5,
+        "strokeJoin": "round",
+        "opacity": 0.9
+      },
+      "encoding": {
+        "longitude": {
+          "field": "label_lon",
+          "type": "quantitative"
+        },
+        "latitude": {
+          "field": "label_lat",
+          "type": "quantitative"
+        },
+        "text": {
+          "field": "label",
+          "type": "nominal"
+        }
+      }
+    },
+    {
+      "data": {
+        "values": [
+          {
+            "lon": 145.31,
+            "lat": -38.11,
+            "label_lon": 145.62,
+            "label_lat": -38.2,
+            "align": "left",
+            "label": "Casey: 38,200 people,\nthe most of any council"
+          },
+          {
+            "lon": 145.17,
+            "lat": -38.13,
+            "label_lon": 144.82,
+            "label_lat": -38.22,
+            "align": "right",
+            "label": "Frankston: highest rate,\n15.6% of adults"
+          },
+          {
+            "lon": 145.02,
+            "lat": -37.94,
+            "label_lon": 144.86,
+            "label_lat": -38,
+            "align": "right",
+            "label": "Bayside: lowest rate,\n8.8% of adults"
+          },
+          {
+            "lon": 144.963,
+            "lat": -37.814,
+            "label_lon": 144.66,
+            "label_lat": -37.7,
+            "align": "right",
+            "label": "Melbourne CBD"
+          }
+        ]
+      },
+      "transform": [
+        {
+          "filter": "datum.align === 'right'"
+        }
+      ],
+      "mark": {
+        "type": "text",
+        "align": "right",
+        "dx": -4,
+        "baseline": "middle",
+        "lineBreak": "\n",
+        "fontSize": 11.5,
+        "fontWeight": "bold",
+        "color": "#243447"
+      },
+      "encoding": {
+        "longitude": {
+          "field": "label_lon",
+          "type": "quantitative"
+        },
+        "latitude": {
+          "field": "label_lat",
+          "type": "quantitative"
+        },
+        "text": {
+          "field": "label",
+          "type": "nominal"
+        }
       }
     }
   ],
   "config": {
-    "view": {"stroke": null},
+    "view": {
+      "stroke": null
+    },
     "title": {
       "offset": 20,
       "subtitlePadding": 6,
@@ -85,7 +504,13 @@
       "subtitleFontSize": 13,
       "subtitleColor": "#4a5563"
     },
-    "legend": {"labelFontSize": 12, "titleFontSize": 12},
-    "axis": {"labelFontSize": 12, "titleFontSize": 12}
+    "legend": {
+      "labelFontSize": 12,
+      "titleFontSize": 12
+    },
+    "axis": {
+      "labelFontSize": 12,
+      "titleFontSize": 12
+    }
   }
 }
