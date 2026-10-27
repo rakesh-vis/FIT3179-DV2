@@ -1,105 +1,238 @@
 <!DOCTYPE html>
 <html lang="en">
-
+ 
 <head>
   <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+  <title>Health Isn't Evenly Shared</title>
+ 
+  <!-- Vega, Vega-Lite and Vega-Embed -->
   <script src="https://cdn.jsdelivr.net/npm/vega@6"></script>
   <script src="https://cdn.jsdelivr.net/npm/vega-lite@6"></script>
   <script src="https://cdn.jsdelivr.net/npm/vega-embed@7"></script>
-
+ 
+  <!-- Pure.css grid (Week 9 studio) + responsive grid so columns stack on phones -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/purecss@3.0.0/build/pure-min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/purecss@3.0.0/build/grids-responsive-min.css">
+ 
+  <!-- Google fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@700;900&family=Source+Sans+3:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+ 
+  <!-- Own styles -->
+  <link rel="stylesheet" href="css/styles.css">
+ 
   <script src="js/visualisations.js" defer></script>
-
-   <title>Health Isn't Evenly Shared</title>
-<style>
-  body{
-    font-family: Arial, sans-serif;
-    background-color: #f5f7fa;
-    color: #243447;
-    max-width: 1000px;
-    margin: 0 auto;
-    padding: 30px;
-  }
-  h1 {
-    font-family: Georgia, serif;
-    font-size: 48px;
-    font-weight: 700;
-    line-height: 1.15;
-    letter-spacing: -1px;
-    text-align: center;
-    margin-bottom: 20px;
-  }
-
-  h2 {
-    font-family: Arial, sans-serif;
-    font-size: 24px;
-    font-weight: 700;
-    margin-top: 50px;
-    margin-bottom: 20px;
-  }
-
-  #obesity_map,
-  #food_insecurity,
-  #income_lollipop 
-  #food_waffle,
-  #food_heatmap,
-  #inactivity_map,
-  #distress_map,
-  #disadvantage_dots,
-  #sex_butterfly,
-  #disadvantage_jitter,
-  #city_region_slope {
-    background-color: white;
-    padding: 25px;
-    border-radius: 10px;
-    margin-bottom: 30px;
-  }
-  
-</style>
-
-  
 </head>
-
+ 
 <body>
-
-  <h1>Health Isn't Evenly Shared</h1>
-
-  <h2>Obesity Rates Across Australia</h2>
-  <div id="obesity_map"></div>
-
-  <h2>Physical Inactivity Across Australia</h2>
-  <p>Use the "Show" menu below to zoom in on a city or region.</p>
-  <div id="inactivity_map"></div>
-
-  <h2>Disadvantage and Food Insecurity</h2>
-  <div id="disadvantage_dots"></div>
-
-  <h2>Psychologic Distress in Melbourne</h2>
-  <div id="distress_map"></div>
-
-  <h2>Food Insecurity by Household Income</h2>
-  <div id="income_lollipop"></div>
-
-  <h2>How Many Households Go Without?</h2>
-  <div id="food_waffle"></div>
-
-  <h2>How Severe Is It?</h2>
-  <div id="food_heatmap"></div>
-
-  <h2>Food Insecurity by Household Type</h2>
-  <div id="food_insecurity"></div>
-
-  <h2>Men and Women Face Different Risks</h2>
-  <div id="sex_butterfly"></div>
-
-  <h2>Disadvantage Shapes Health</h2>
-  <p>Use the "Show" menu below the chart to switch between health measures.</p>
-  <div id="disadvantage_jitter"></div>
-
-  <h2>Cities vs Regions</h2>
-  <div id="city_region_slope"></div>
-
+ 
+  <!-- ================= HEADER ================= -->
+  <div class="header">
+    <h1>Health Isn't Evenly Shared</h1>
+    <p class="standfirst">Where you live, how much you earn and who you are all shape your chances of being healthy in Australia.</p>
+    <p class="byline">Rakesh Viswanathan · FIT3179 Data Visualisation 2 · October 2026</p>
+  </div>
+ 
+  <div class="page">
+ 
+    <!-- ================= INTRO ================= -->
+    <div class="intro">
+      <p class="todo">INTRO (write 3–4 sentences): what this page is about, why it matters, and what the reader will see. E.g. most Australians are healthy, but risks like obesity, inactivity, smoking and psychological distress are not spread evenly.</p>
+    </div>
+ 
+ 
+    <!-- ================= PART 1: WHERE YOU LIVE ================= -->
+    <div class="section-heading">
+      <p class="kicker">Part 1</p>
+      <h2>Where you live</h2>
+    </div>
+ 
+    <!-- Obesity choropleth: full width -->
+    <div class="pure-g">
+      <div class="pure-u-1">
+        <div class="description-top">
+          <p class="todo">OBESITY MAP (2–3 sentences): which parts of Australia have the highest obesity rates? Mention the slider: drag it to fade out areas below a chosen rate.</p>
+        </div>
+        <div id="obesity_map" class="vis-container"></div>
+        <p class="source">Source: PHIDU Social Health Atlas of Australia (Local Government Areas), modelled estimates for 2022. Boundaries: ABS ASGS Edition 3, LGA 2021.</p>
+      </div>
+    </div>
+ 
+    <!-- Inactivity proportional symbol map: full width -->
+    <div class="pure-g">
+      <div class="pure-u-1">
+        <div class="description-top">
+          <p class="todo">INACTIVITY MAP (2–3 sentences): big circles are in the cities (most people), but darker circles (higher rates) are in the regions.</p>
+          <p class="hint">Use the "Show" menu under the map to zoom in on a city or region.</p>
+        </div>
+        <div id="inactivity_map" class="vis-container"></div>
+        <p class="source">Source: PHIDU Social Health Atlas of Australia (Local Government Areas), 2022. Circles placed at LGA centroids. Boundaries: ABS LGA 2021.</p>
+      </div>
+    </div>
+ 
+    <!-- Slope chart: full width -->
+    <div class="pure-g">
+      <div class="pure-u-1">
+        <div class="description-top">
+          <h3>Cities vs the regions</h3>
+          <p class="todo">SLOPE CHART (2–3 sentences): every one of the five risks is higher outside the capital cities. Biggest gaps are smoking and risky drinking.</p>
+        </div>
+        <div id="city_region_slope" class="vis-container"></div>
+        <p class="source">Source: PHIDU Social Health Atlas of Australia, 2022 (Greater Capital City Statistical Areas vs Rest of State/NT, age-standardised).</p>
+      </div>
+    </div>
+ 
+    <!-- Melbourne dot density map: full width -->
+    <div class="pure-g">
+      <div class="pure-u-1">
+        <div class="description-top">
+          <h3>A closer look at Melbourne</h3>
+          <p class="todo">DOT MAP (2–3 sentences): each dot is 200 people with high psychological distress. Where do they cluster? Rates vs numbers.</p>
+        </div>
+        <div id="distress_map" class="vis-container"></div>
+        <p class="source">Source: PHIDU Social Health Atlas of Australia (Local Government Areas), 2022. 1 dot = 200 people, placed randomly within each council. Boundaries: ABS LGA 2021.</p>
+      </div>
+    </div>
+ 
+ 
+    <!-- ================= PART 2: HOW MUCH YOU HAVE ================= -->
+    <div class="section-heading">
+      <p class="kicker">Part 2</p>
+      <h2>How much you have</h2>
+    </div>
+ 
+    <!-- Jitter strip plot: full width -->
+    <div class="pure-g">
+      <div class="pure-u-1">
+        <div class="description-top">
+          <p class="todo">JITTER PLOT (2–3 sentences): LGAs grouped into fifths by disadvantage. The median line moves to the right as areas become more disadvantaged, for every measure.</p>
+          <p class="hint">Use the "Show" menu under the chart to switch between health measures.</p>
+        </div>
+        <div id="disadvantage_jitter" class="vis-container"></div>
+        <p class="source">Source: PHIDU Social Health Atlas of Australia (Local Government Areas), 2022. Disadvantage: ABS Index of Relative Socio-economic Disadvantage (IRSD), 2021.</p>
+      </div>
+    </div>
+ 
+ 
+    <!-- ================= PART 3: FOOD ON THE TABLE ================= -->
+    <div class="section-heading">
+      <p class="kicker">Part 3</p>
+      <h2>Food on the table</h2>
+    </div>
+ 
+    <!-- Waffle: chart left, text right -->
+    <div class="pure-g">
+      <div class="pure-u-1 pure-u-md-3-5">
+        <div id="food_waffle" class="vis-container"></div>
+        <p class="source">Source: ABS, Food Security, 2023 (National Nutrition and Physical Activity Survey).</p>
+      </div>
+      <div class="pure-u-1 pure-u-md-2-5">
+        <div class="description description-right">
+          <h3>How many go without?</h3>
+          <p class="todo">WAFFLE (2 sentences): about 1 in 8 households is food insecure.</p>
+        </div>
+      </div>
+    </div>
+ 
+    <!-- Connected dot plot: text left, chart right -->
+    <div class="pure-g">
+      <div class="pure-u-1 pure-u-md-1-3">
+        <div class="description description-left">
+          <h3>Disadvantage and food</h3>
+          <p class="todo">DOT PLOT (2 sentences): severe food insecurity is about five times more common in the most disadvantaged areas.</p>
+        </div>
+      </div>
+      <div class="pure-u-1 pure-u-md-2-3">
+        <div id="disadvantage_dots" class="vis-container"></div>
+        <p class="source">Source: ABS, Food Security, 2023. Areas grouped by ABS IRSD quintile.</p>
+      </div>
+    </div>
+ 
+    <!-- Lollipop: chart left, text right -->
+    <div class="pure-g">
+      <div class="pure-u-1 pure-u-md-2-3">
+        <div id="income_lollipop" class="vis-container"></div>
+        <p class="source">Source: ABS, Food Security, 2023. Income = equivalised gross weekly household income.</p>
+      </div>
+      <div class="pure-u-1 pure-u-md-1-3">
+        <div class="description description-right">
+          <h3>Income matters</h3>
+          <p class="todo">LOLLIPOP (2 sentences): 23.2% of the lowest-income households vs 3.6% of the highest.</p>
+        </div>
+      </div>
+    </div>
+ 
+    <!-- Bar chart: text left, chart right -->
+    <div class="pure-g">
+      <div class="pure-u-1 pure-u-md-1-3">
+        <div class="description description-left">
+          <h3>Who is in the household</h3>
+          <p class="todo">BAR CHART (2 sentences): lone-parent families (34%) and group households (27.8%) are most affected.</p>
+        </div>
+      </div>
+      <div class="pure-u-1 pure-u-md-2-3">
+        <div id="food_insecurity" class="vis-container"></div>
+        <p class="source">Source: ABS, Food Security, 2023.</p>
+      </div>
+    </div>
+ 
+    <!-- Heatmap: chart left, text right -->
+    <div class="pure-g">
+      <div class="pure-u-1 pure-u-md-2-3">
+        <div id="food_heatmap" class="vis-container"></div>
+        <p class="source">Source: ABS, Food Security, 2023.</p>
+      </div>
+      <div class="pure-u-1 pure-u-md-1-3">
+        <div class="description description-right">
+          <h3>How severe is it?</h3>
+          <p class="todo">HEATMAP (2 sentences): for the same household types, how much of it is severe (skipping meals / going without)?</p>
+        </div>
+      </div>
+    </div>
+ 
+ 
+    <!-- ================= PART 4: WHO YOU ARE ================= -->
+    <div class="section-heading">
+      <p class="kicker">Part 4</p>
+      <h2>Who you are</h2>
+    </div>
+ 
+    <!-- Butterfly chart: full width -->
+    <div class="pure-g">
+      <div class="pure-u-1">
+        <div class="description-top">
+          <p class="todo">BUTTERFLY (2–3 sentences): men drink, smoke and vape more; women report more psychological distress.</p>
+        </div>
+        <div id="sex_butterfly" class="vis-container"></div>
+        <p class="source">Source: [CHECK: name the exact source of sex_risk_factors.csv, e.g. ABS National Health Survey 2022]. *Risky drinking and vaping are for people aged 15+.</p>
+      </div>
+    </div>
+ 
+ 
+    <!-- ================= CONCLUSION ================= -->
+    <div class="conclusion">
+      <h2>What it adds up to</h2>
+      <p class="todo">CONCLUSION (3–4 sentences): pull the four parts together. Health risks pile up in regional and disadvantaged areas and in low-income households. End with one line on why this matters.</p>
+    </div>
+ 
+ 
+    <!-- ================= SOURCES ================= -->
+    <div class="sources">
+      <h2>Data sources and notes</h2>
+      <ul>
+        <li>Public Health Information Development Unit (PHIDU), Torrens University Australia. <em>Social Health Atlas of Australia: Local Government Areas</em>. <a href="https://phidu.torrens.edu.au/social-health-atlases/data" target="_blank">phidu.torrens.edu.au</a> (modelled estimates, 2022).</li>
+        <li>Australian Bureau of Statistics. <em>Food Security, 2023</em> (National Nutrition and Physical Activity Survey), Table 13. <a href="#" target="_blank">[paste ABS link]</a></li>
+        <li>Australian Bureau of Statistics. <em>Australian Statistical Geography Standard (ASGS) Edition 3</em>, Local Government Areas 2021 digital boundaries. <a href="https://www.abs.gov.au/statistics/standards/australian-statistical-geography-standard-asgs-edition-3/jul2021-jun2026/access-and-downloads/digital-boundary-files" target="_blank">abs.gov.au</a></li>
+        <li class="todo">[Source for the sex comparison chart]</li>
+      </ul>
+      <p><strong>Data preparation.</strong> LGA estimates were extracted from the PHIDU workbook with Python and joined to the LGA boundaries by LGA code. Boundaries were simplified and converted to TopoJSON with mapshaper. Areas with no published estimate are shown in grey. The Melbourne dot map places one dot per 200 people at random inside each council.</p>
+      <p><strong>Tools.</strong> Built with Vega-Lite 6, Pure.css and Google Fonts. AI acknowledgement: <span class="todo">[write how you used AI, e.g. Claude was used to help write and debug Vega-Lite code and prepare data; all design decisions and text are my own]</span></p>
+      <p>Created by Rakesh Viswanathan, October 2026.</p>
+    </div>
+ 
+  </div> <!-- end page -->
+ 
 </body>
 </html>
