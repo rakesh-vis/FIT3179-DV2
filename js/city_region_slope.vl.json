@@ -1,6 +1,6 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v6.json",
-  "width": 300,
+  "width": 220,
   "height": 400,
   "title": {
     "text": "Every health risk is higher outside the capital cities",
@@ -11,7 +11,10 @@
     "url": "https://raw.githubusercontent.com/rakesh-vis/FIT3179-DV2/refs/heads/main/data/city_region_risk.csv"
   },
   "transform": [
-    {"calculate": "toNumber(datum.rate)", "as": "rate"},
+    {
+      "calculate": "toNumber(datum.rate)",
+      "as": "rate"
+    },
     {
       "calculate": "{'High or very high psychological distress': 'High psychological distress', 'Obese': 'Obese', 'Current smoker': 'Smoker', 'Risky drinking (5+ drinks, at least monthly)': 'Risky drinking', 'Not meeting physical activity guidelines': 'Not meeting activity guidelines'}[datum.measure]",
       "as": "label"
@@ -20,18 +23,35 @@
       "calculate": "datum.area === 'Rest of state' ? {'Smoker': 8, 'High psychological distress': -6}[datum.label] || 0 : {'Smoker': 6, 'High psychological distress': -6}[datum.label] || 0",
       "as": "label_nudge"
     },
-    {"calculate": "datum.rate - datum.label_nudge * 85 / 400", "as": "label_y"},
     {
-      "joinaggregate": [{"op": "min", "field": "rate", "as": "city_rate"}],
-      "groupby": ["measure"]
+      "calculate": "datum.rate - datum.label_nudge * 85 / 400",
+      "as": "label_y"
     },
-    {"calculate": "datum.rate - datum.city_rate", "as": "gap"}
+    {
+      "joinaggregate": [
+        {
+          "op": "min",
+          "field": "rate",
+          "as": "city_rate"
+        }
+      ],
+      "groupby": [
+        "measure"
+      ]
+    },
+    {
+      "calculate": "datum.rate - datum.city_rate",
+      "as": "gap"
+    }
   ],
   "encoding": {
     "x": {
       "field": "area",
       "type": "nominal",
-      "sort": ["Capital cities", "Rest of state"],
+      "sort": [
+        "Capital cities",
+        "Rest of state"
+      ],
       "title": null,
       "axis": {
         "orient": "top",
@@ -44,17 +64,33 @@
         "grid": true,
         "gridColor": "#c9ced6",
         "gridWidth": 1.5,
-        "gridDash": [4, 3]
+        "gridDash": [
+          4,
+          3
+        ]
       },
-      "scale": {"padding": 0.15}
+      "scale": {
+        "padding": 0.15
+      }
     },
     "y": {
       "field": "rate",
       "type": "quantitative",
       "title": null,
-      "scale": {"domain": [0, 85]},
+      "scale": {
+        "domain": [
+          0,
+          85
+        ]
+      },
       "axis": {
-        "values": [0, 20, 40, 60, 80],
+        "values": [
+          0,
+          20,
+          40,
+          60,
+          80
+        ],
         "grid": true,
         "gridColor": "#eceef1",
         "domain": false,
@@ -72,24 +108,50 @@
   },
   "layer": [
     {
-      "mark": {"type": "line", "color": "#9aa3ad", "strokeWidth": 2.5},
-      "encoding": {"detail": {"field": "measure"}}
+      "mark": {
+        "type": "line",
+        "color": "#9aa3ad",
+        "strokeWidth": 2.5
+      },
+      "encoding": {
+        "detail": {
+          "field": "measure"
+        }
+      }
     },
     {
-      "mark": {"type": "circle", "size": 110, "opacity": 1},
+      "mark": {
+        "type": "circle",
+        "size": 110,
+        "opacity": 1
+      },
       "encoding": {
         "color": {
           "field": "area",
           "type": "nominal",
           "scale": {
-            "domain": ["Capital cities", "Rest of state"],
-            "range": ["#3182bd", "#e76f51"]
+            "domain": [
+              "Capital cities",
+              "Rest of state"
+            ],
+            "range": [
+              "#3182bd",
+              "#e76f51"
+            ]
           },
           "legend": null
         },
         "tooltip": [
-          {"field": "label", "type": "nominal", "title": "Risk factor"},
-          {"field": "area", "type": "nominal", "title": "Area"},
+          {
+            "field": "label",
+            "type": "nominal",
+            "title": "Risk factor"
+          },
+          {
+            "field": "area",
+            "type": "nominal",
+            "title": "Area"
+          },
           {
             "field": "rate",
             "type": "quantitative",
@@ -106,7 +168,11 @@
       }
     },
     {
-      "transform": [{"filter": "datum.area === 'Capital cities'"}],
+      "transform": [
+        {
+          "filter": "datum.area === 'Capital cities'"
+        }
+      ],
       "mark": {
         "type": "text",
         "align": "right",
@@ -116,13 +182,23 @@
         "color": "#1f5f8f"
       },
       "encoding": {
-        "text": {"field": "rate", "type": "quantitative", "format": ".1f"},
-        "y": {"field": "label_y", "type": "quantitative", "title": null}
+        "text": {
+          "field": "rate",
+          "type": "quantitative",
+          "format": ".1f"
+        },
+        "y": {
+          "field": "label_y",
+          "type": "quantitative",
+          "title": null
+        }
       }
     },
     {
       "transform": [
-        {"filter": "datum.area === 'Rest of state'"},
+        {
+          "filter": "datum.area === 'Rest of state'"
+        },
         {
           "calculate": "format(datum.rate, '.1f') + '   ' + datum.label",
           "as": "right_label"
@@ -137,13 +213,22 @@
         "color": "#a8412a"
       },
       "encoding": {
-        "text": {"field": "right_label", "type": "nominal"},
-        "y": {"field": "label_y", "type": "quantitative", "title": null}
+        "text": {
+          "field": "right_label",
+          "type": "nominal"
+        },
+        "y": {
+          "field": "label_y",
+          "type": "quantitative",
+          "title": null
+        }
       }
     }
   ],
   "config": {
-    "view": {"stroke": null},
+    "view": {
+      "stroke": null
+    },
     "title": {
       "offset": 20,
       "subtitlePadding": 6,
@@ -151,6 +236,11 @@
       "subtitleFontSize": 13,
       "subtitleColor": "#4a5563"
     },
-    "padding": {"left": 10, "right": 230, "top": 10, "bottom": 10}
+    "padding": {
+      "left": 10,
+      "right": 215,
+      "top": 10,
+      "bottom": 10
+    }
   }
 }
