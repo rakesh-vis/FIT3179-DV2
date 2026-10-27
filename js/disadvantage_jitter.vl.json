@@ -82,7 +82,7 @@
     "x": {
       "field": "value",
       "type": "quantitative",
-      "title": "% of people in the LGA",
+      "title": "% of people in the area",
       "scale": {
         "domain": {
           "expr": "{'smoking_rate': [0, 40], 'obesity_rate': [15, 55], 'distress_rate': [5, 35], 'inactive_rate': [55, 95]}[measure]"
