@@ -51,3 +51,9 @@ vegaEmbed(
   "js/sex_butterfly.vl.json", 
   { actions: false }
 );
+
+vegaEmbed(
+  "#disadvantage_jitter",
+  "js/disadvantage_jitter.vl.json",
+  { actions: false }
+);
