@@ -27,7 +27,7 @@
         "min": 15,
         "max": 50,
         "step": 1,
-        "name": "Highlight LGAs with an obesity rate of at least (%): "
+        "name": "Highlight areas with an obesity rate of at least (%): "
       }
     }
   ],
