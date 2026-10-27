@@ -46,7 +46,8 @@ vegaEmbed(
   { actions: false }
 );
 
-vegaEmbed("#sex_butterfly", 
-          "js/sex_butterfly.vl.json", 
-          { actions: false }
+vegaEmbed(
+  "#sex_butterfly", 
+  "js/sex_butterfly.vl.json", 
+  { actions: false }
 );
